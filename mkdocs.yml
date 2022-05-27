@@ -2,6 +2,9 @@ site_name: Mégra Documentation
 site_url: https://megra-doc.readthedocs.io/
 nav:
     - 'Home' : 'index.md'
+    - 'User Guide' :
+        - 'Installation' : 'installation.md'
+        - 'Audio Configuration' : 'audio-configuration.md'
     - 'Function Reference' :
         - 'Generator Generators' : 'function-reference/generator-generators.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
