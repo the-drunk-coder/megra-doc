@@ -5,6 +5,8 @@ nav:
     - 'User Guide' :
         - 'Installation' : 'installation.md'
         - 'Audio Configuration' : 'audio-configuration.md'
+        - 'Important Folders' : 'folders.md'
+        - 'Using Samples' : 'using-samples.md'
     - 'Function Reference' :
         - 'Generator Generators' : 'function-reference/generator-generators.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
