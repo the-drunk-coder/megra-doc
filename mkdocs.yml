@@ -1,1 +1,12 @@
 site_name: Mégra Documentation
+site_url: https://megra-doc.readthedocs.io/
+nav:
+    - Home: 'index.md'
+    - 'Function Reference' :
+        - 'Generator Generators' : 'function-reference/generator-generators.md'
+        - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
+        - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
+        - 'Discrete Parameter Modifiers' : 'function-reference/discrete-parameter-modifiers.md'
+        - 'Applicators' : 'function-reference/applicators.md'
+        - 'Global Commands' : 'function-reference/global-commands.md'
+theme: material
