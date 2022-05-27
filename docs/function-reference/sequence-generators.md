@@ -1,4 +1,4 @@
-# Generator Generators
+# Sequence Generators
 
 ## `cyc` - Cycle Generator
 

@@ -8,7 +8,7 @@ nav:
         - 'Important Folders' : 'folders.md'
         - 'Using Samples' : 'using-samples.md'
     - 'Function Reference' :
-        - 'Generator Generators' : 'function-reference/generator-generators.md'
+        - 'Sequence Generators' : 'function-reference/sequence-generators.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
         - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
         - 'Discrete Parameter Modifiers' : 'function-reference/discrete-parameter-modifiers.md'
