@@ -253,7 +253,7 @@ Learn a trap-like beat from a sample string.
              ~xoxoxox~ohxhohxhohxhxhxhxhxhxhxhoho
              hoh"))
 ```
-<img src="../diagrams/learned-beat.svg" alt="A learned beat." width="1000" height="1000">
+<img src="../../diagrams/learned-beat.svg" alt="A learned beat." width="1000" height="1000">
 
 ---
 
