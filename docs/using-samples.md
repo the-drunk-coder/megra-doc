@@ -1,8 +1,8 @@
 # Using (and Finding) Samples
 
-f you don't already have a sample set at hand, some samples (enough to follow the documentation and tutorial) can be found here: https://github.com/the-drunk-coder/megra-public-samples
+If you don't already have a sample set at hand, some samples (enough to follow the documentation and tutorial) can be found here: https://github.com/the-drunk-coder/megra-public-samples
 
-Mégra currently only supports samples in FLAC format (waw is in the making).
+Mégra currently only supports samples in FLAC format (wav is in the making).
 
 Place the samples in the folder (folder will be created at first start):
 
