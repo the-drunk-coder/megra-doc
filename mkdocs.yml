@@ -17,6 +17,7 @@ nav:
         - '7. Parts and Control Events' : 'tutorial/parts-and-control-events.md'
         - '8. Final Remarks' : 'tutorial/final-remarks.md'
     - 'Function Reference' :
+        - 'Sound and Control Events' : 'function-reference/sound-events.md'
         - 'Sequence Generators' : 'function-reference/sequence-generators.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
         - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
