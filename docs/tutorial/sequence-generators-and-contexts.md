@@ -22,7 +22,7 @@ Everything that follows are **sequence generators**. A **sequence generator** ge
 ```
 
 You can put multiple sequence generators in the same context, so that they all run in sync:
-Per defualt, new generators (that were not present in the context before) are **syncronized**
+Per default, new generators (that were not present in the context before) are **syncronized**
 on a **non-silent event**.
 
 ```lisp

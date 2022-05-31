@@ -21,7 +21,8 @@ Sample events allow you to play a pre-loaded samples, using keywords to specify 
 
 | Parameter | Default | Description |
 |-----------|:-------:|:-----------:|
-| `:lvl`       | 0.3     | gain level |
+| `:lvl`       | 0.3     | envelope max level |
+| `:amp`       | 0.3     | sampler (oscillator) amplitude |
 | `:rate`      | 1.0     | sample playback rate |
 | `:start`     | 0.0     | start within sample file, ratio |
 | `:atk`       | 5       | gain envelope attack, in ms |
@@ -108,7 +109,8 @@ First argument specifies the buffer to be read from: `(freezr <bufnum>)`
 | Parameter | Default | Description |
 |-----------|:-------:|:-----------:|
 |  pitch     | 43     | pitch - might be frequency in hertz or quoted note name |
-| `:lvl`       | 0.3     | gain level |
+| `:lvl`       | 0.3     | envelope level |
+| `:amp`       | 0.3     | oscillator amplitude |
 | `:atk`       | 5       | gain envelope attack, in ms |
 | `:rel`       | 5       | gain envelope release, in ms |
 | `:sus`       | -       | gain envelope sustain, in ms |
