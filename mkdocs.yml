@@ -15,7 +15,8 @@ nav:
         - '5. Modifying Generators' : 'tutorial/modifying-sequence-generators.md'
         - '6. Layering Generators' : 'tutorial/multiplying-generators.md'
         - '7. Parts and Control Events' : 'tutorial/parts-and-control-events.md'
-        - '8. Final Remarks' : 'tutorial/final-remarks.md'
+        - '9. Recording Your Sessions' : 'tutorial/recording.md'
+        - '10. Final Remarks' : 'tutorial/final-remarks.md'
     - 'Function Reference' :
         - 'Sound and Control Events' : 'function-reference/sound-events.md'
         - 'Sequence Generators' : 'function-reference/sequence-generators.md'
