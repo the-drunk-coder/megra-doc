@@ -26,7 +26,7 @@ It might seem simple, but this is one of the most powerful generators in Mégra.
 ### Example 
 ```lisp
 ;; plain
-(sx 'simple ##t
+(sx 'simple #t
   (cyc 'beat "bd ~ hats ~ sn ~ hats ~"))
 ```
 
@@ -34,7 +34,7 @@ It might seem simple, but this is one of the most powerful generators in Mégra.
 
 ```lisp
 ;; with a 40% chance of repetition, 2 times at max
-(sx 'simple ##t
+(sx 'simple #t
     (cyc 'beat :rep 40 :max-rep 2 "bd ~ hats ~ sn ~ hats ~"))
 ```
 ![A beat with repetitions](../diagrams/cycle-complex.svg)
@@ -42,7 +42,7 @@ It might seem simple, but this is one of the most powerful generators in Mégra.
 
 ```lisp
 ;; with labeled events
-(sx 'simple ##t	
+(sx 'simple #t	
 	(cyc 'beat 
 	:events 'a (bd) 'b (hats) 'c (sn)
 	"'a ~ 'b ~ 'c ~ 'b ~"))
@@ -50,7 +50,7 @@ It might seem simple, but this is one of the most powerful generators in Mégra.
 
 ```lisp
 ;; with parameters and placeholder
-(sx 'simple ##t	
+(sx 'simple #t	
 	(cyc 'beat 
 	:map 'saw 
 	"200 ~ 120 140 'a3")) ;; you can use frequencies or note names 
@@ -58,18 +58,18 @@ It might seem simple, but this is one of the most powerful generators in Mégra.
 
 ```lisp
 ;; with escape durations
-(sx 'simple ##t
+(sx 'simple #t
 	(cyc 'beat "bd ~ hats /100 hats /100 ~ sn ~ hats ~"))
 ```
 
 ```lisp
 ;; control cycles with other cycles
-(sx 'control ##t
+(sx 'control #t
 	(cyc 'ba 
 		:dur 1599 ;; switch just in time ... will run out of sync eventually
 		:events
-		'a (ctrl (sx 'controlled ##t (cyc 'fa "bd sn")))
-		'b (ctrl (sx 'controlled ##t (cyc 'fa "hats hats")))
+		'a (ctrl (sx 'controlled #t (cyc 'fa "bd sn")))
+		'b (ctrl (sx 'controlled #t (cyc 'fa "hats hats")))
 		"'a 'b 'a 'b"
 		))
 ```
@@ -85,7 +85,7 @@ a loop can be applied (`rep`, `max-rep` and `rnd`).
 
 ```lisp
 ;; chop violin sample into 8 parts (each of which is 200ms long)
-(sx 'some ##t
+(sx 'some #t
   (chop 'chops 8 (violin 'a3 :sus 200))) 
 ```
 
@@ -110,7 +110,7 @@ Create ... well, look at the examples.
 
 ```lisp
 ;; flower with one layer and four petals
-(sx 'a-rose-is-a ##t
+(sx 'a-rose-is-a #t
   (flower 'rose 
     :pistil (saw 100)
     :petals (saw 200) (saw 300) (saw 400) (saw 150)))
@@ -120,7 +120,7 @@ Create ... well, look at the examples.
 
 Flower with 2 layers:
 ```lisp
-(sx 'a-rose-is-a ##t
+(sx 'a-rose-is-a #t
   (flower 'rose 
     :layers 2
     :pistil (saw 100)
@@ -153,7 +153,7 @@ This creates a directed version of a Friendship- or Windmill graph.
 ### Example
 
 ```lisp
-(sx 'friend ##t
+(sx 'friend #t
   (cmp
     (pear (atk 1) (rel 90) (sus 10) (rev 0.07))
       (friendship 'ship 
@@ -179,7 +179,7 @@ Each node follows each other node with equal probablity ... so basically a rando
 
 ```lisp
 ;; random generator with five events
-(sx 'full ##t
+(sx 'full #t
     (fully 'mel :rest (saw 'a3) (saw 'f2) (saw 'c3) (saw 'e3) (saw 'a4)))
 
 ```
@@ -287,11 +287,11 @@ very simple generator if you want a plain loop in a lisp-y syntax.
 
 ```lisp
 ;; default durations
-(sx 'around ##t
+(sx 'around #t
   (loop 'and-around (saw 100) (saw 200) (saw 300) (saw 400)))
   
 ;; custom durations
-(sx 'around ##t
+(sx 'around #t
   (loop 'and-around (saw 100) 400 (saw 200) 100 (saw 300) 200 (saw 400)))
 ```
 
