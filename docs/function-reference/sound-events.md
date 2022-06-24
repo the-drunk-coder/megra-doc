@@ -157,6 +157,17 @@ A simple risset bell event.
 | `:del`      | 0.0     | echo amount |
 | `:tags`     |none| additional tags |
 
+## Wavetable Synth
+
+The wavetable synth is exactly that. 
+
+### Example
+
+
+
+## Wavematrix Synth
+
+The wavematrix synth is a powerful synth in the style of "spectral morphing" synths such as Vital or Serum. 
 
 ## A Note about Note Names
 Note names follow the Common Music 2.x convention, where `'a4` is the concert pitch of 440hz, above the *middle c* which is `'c4`. `'cs4` denotes a sharp note, `'cf4` denotes a flat note. The sharp/flat schema is consistent over all notes.
