@@ -19,11 +19,13 @@ nav:
         - '9. Recording Your Sessions' : 'tutorial/recording.md'
         - '10. Final Remarks' : 'tutorial/final-remarks.md'
     - 'Function Reference' :
-        - 'Sound and Control Events' : 'function-reference/sound-events.md'
+        - 'Sound Events' : 'function-reference/sound-events.md'
+        - 'Control Events' : 'function-reference/control-events.md'
         - 'Sequence Generators' : 'function-reference/sequence-generators.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
         - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
         - 'Discrete Parameter Modifiers' : 'function-reference/discrete-parameter-modifiers.md'
+        - 'Continuous Modulators' : 'function-reference/continous-modulators.md'
         - 'Applicators' : 'function-reference/applicators.md'
         - 'Global Commands' : 'function-reference/global-commands.md'
 theme:

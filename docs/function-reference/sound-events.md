@@ -21,13 +21,13 @@ Sample events allow you to play a pre-loaded samples, using keywords to specify 
 
 | Parameter | Default | Description |
 |-----------|:-------:|:-----------:|
-| `:lvl`       | 0.3     | envelope max level |
-| `:amp`       | 0.3     | sampler (oscillator) amplitude |
+| `:lvl`       | 0.5     | envelope max level |
+| `:amp`       | 0.77     | sampler (oscillator) amplitude |
 | `:rate`      | 1.0     | sample playback rate |
 | `:start`     | 0.0     | start within sample file, ratio |
-| `:atk`       | 5       | gain envelope attack, in ms |
-| `:rel`       | 5       | gain envelope release, in ms |
-| `:sus`       | -       | gain envelope sustain, in ms|
+| `:atk`       | 1       | gain envelope attack, in ms |
+| `:rel`       | 1       | gain envelope release, in ms |
+| `:sus`       | sample lenght, 10s max       | gain envelope sustain, in ms|
 | `:pos`       | 0.0      | stereo position (-1.0 left, 0.0 center 1.0 right) or channel number in multichannel mode |
 | `:lpf`   | 19000   | lowpass filter frequency  |
 | `:lpq`      | 0.4     | lowpass filter q factor |
@@ -80,7 +80,9 @@ First argument specifies the buffer to be read from: `(freezr <bufnum>)`
   (nuc 'ba :dur 100 (freezr 1 :start (bounce 0.0 1.0) :atk 1 :sus 100 :rel 100)))
 ```
 
-## Simple Synth Events 
+## Simple, Non-Bandlimited Synth Events 
+
+These are some very naive implementations of non-bandlimited waveforms (except for the sine wave). They are pretty dirty and are not even tuned that well, but have a certain quality to them.
 
 ### Syntax
 
@@ -108,12 +110,12 @@ First argument specifies the buffer to be read from: `(freezr <bufnum>)`
 
 | Parameter | Default | Description |
 |-----------|:-------:|:-----------:|
-|  pitch     | 43     | pitch - might be frequency in hertz or quoted note name |
-| `:lvl`       | 0.3     | envelope level |
-| `:amp`       | 0.3     | oscillator amplitude |
-| `:atk`       | 5       | gain envelope attack, in ms |
-| `:rel`       | 5       | gain envelope release, in ms |
-| `:sus`       | -       | gain envelope sustain, in ms |
+|  pitch     | 100     | pitch - might be frequency in hertz or quoted note name |
+| `:lvl`       | 0.5     | envelope level |
+| `:amp`       | 0.6     | oscillator amplitude |
+| `:atk`       | 1     | gain envelope attack, in ms |
+| `:rel`       | 100       | gain envelope release, in ms |
+| `:sus`       | 48       | gain envelope sustain, in ms |
 | `:pos`       | 0.0     | (see above) |
 | `:lpf`   | 19000   | lowpass filter frequency  |
 | `:lpq`      | 0.4     | lowpass filter q factor |
@@ -141,9 +143,9 @@ A simple risset bell event.
 
 | Parameter | Default | Description |
 |-----------|:-------:|:-----------:|
-|  pitch     | 43     | pitch - might be frequency in hertz or quoted note name |
-| `:lvl`       | 0.3     | gain level |
-| `:atk`       | 5       | gain envelope attack, in ms |
+|  pitch    | 100     | pitch - might be frequency in hertz or quoted note name |
+| `:lvl`    | 0.5     | gain level |
+| `:atk`    | 5       | gain envelope attack, in ms |
 | `:dec`       | 20       | gain envelope decay, in ms |
 | `:sus`       | 50       | gain envelope sustain, in ms |
 | `:rel`       | 5       | gain envelope release, in ms |
@@ -154,24 +156,6 @@ A simple risset bell event.
 | `:rev`       | 0.0     | reverb amount |
 | `:del`      | 0.0     | echo amount |
 | `:tags`     |none| additional tags |
-
-
-## Control Events
-
-Control events allow you to schedule parts that you'd otherwise execute manually.
-
-### Example
-
-```lisp
-;; Change between two loops 
-(sx 'ba #t 
-  (infer 'ta :events
-    'a (ctrl (sx 'du #t (cyc 'bu "bd ~ sn ~"))) ;; <-- executing the sync context is automated
-    'b (ctrl (sx 'du #t (cyc 'bu "cym cym cym cym")))
-    :rules 
-    (rule 'a 'b 100 1599)
-    (rule 'b 'a 100 1599)))
-```
 
 
 ## A Note about Note Names

@@ -19,47 +19,7 @@ Stops and deletes all present generators.
 
 ## `connect-visualizer`
 
----
-
-## `ctrl`
-
-Executes any function, can be used to conduct execution of generators.
-
-### Parameters
-
-* function
-
-### Syntax
-
-```lisp
-(ctrl <function>)
-```
-
-### Example
-
-```lisp
-;; define some parts
-(defpart 'bass 	
-		(nuc 'bass (saw 100)))
-	
-(defpart 'mid 
-	(nuc 'midrange (saw 1000)))
-	
-(defpart 'treble 
-	(nuc 'treble (saw 5000)))
-
-;; Define a score, here as a learned one, even 
-;; though any other generator might be used.
-(sx 'ga #t 
-	(learn 'ta 
-		:events
-		'a (ctrl (sx 'ba #t 'bass))
-		'b (ctrl (sx 'ba #t 'mid))
-		'c (ctrl (sx 'ba #t 'treble))
-		:sample "ababaabbababcabaababaacabcabac"
-		:dur 2400))
-```
-
+There's an experimental, browser-based visualizer out there for Mégra, that'll be documented some day. 
 
 ---
 
