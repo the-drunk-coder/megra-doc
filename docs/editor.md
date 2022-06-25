@@ -21,6 +21,7 @@ On the top of the editor, you can find a dropdown menu with your Mégra sketches
 * The Editor uses electric parenthesis. You can enclose a section of the code in parenthesis by selecting it an typing a single `(`.
 * Copy: `Ctrl+C` Paste: `Ctrl+V` or `Ctrl+Y`
 * `Tab` formats the current s-expression.
+* `Ctrl+T` toggles the current s-expression on or off (by adding comments)
 * Arrow keys move the cursor. `Ctrl+<ArrowKey>` moves the cursor by words, not characters.
 * `Ctrl+F` moves the cursor forward.
 * `Home` moves the cursor to the first open parenthesis of the current line.
