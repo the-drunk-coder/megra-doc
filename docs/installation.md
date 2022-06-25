@@ -28,7 +28,7 @@ Read the chapter about audio configuration to see what the ringbuffer feature do
 Download or clone the repo. In repo folder, type ...
 
 ```
-cargo run --release -- -e -o 2ch
+cargo run --release -- -o 2ch
 ```
 
 

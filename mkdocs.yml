@@ -7,6 +7,7 @@ nav:
         - 'Audio Configuration' : 'audio-configuration.md'
         - 'Important Folders' : 'folders.md'
         - 'Using Samples' : 'using-samples.md'
+        - 'The Editor' : 'editor.md'
     - 'Tutorial':
         - '1. Soundcheck' : 'tutorial/soundcheck.md'
         - '2. Sequence Generators & Contexts' : 'tutorial/sequence-generators-and-contexts.md'
