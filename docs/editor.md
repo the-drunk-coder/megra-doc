@@ -7,7 +7,7 @@ Some of the shortcuts are inspired by Emacs.
 
 Given that it's build for one specific purpose, it's not configurable at all. 
 If you **don't** want to use the editor, you can start Mégra with the `-r` flag, which will start it in REPL mode. Feel free to make 
-your own plugin for your favourite editor, and let me know it you do so!
+your own plugin for your favourite editor, and let me know if you do so!
 
 ## The Sketchbook
 
