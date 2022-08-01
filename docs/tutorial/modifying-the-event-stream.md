@@ -56,6 +56,8 @@ in a serialist manner:
     (cyc 'sound "risset ~ saw risset sqr"))) ;; <-- this one the type of sound
 ```
 
+See the tutorial chapter "event arithmetic" for some more details on this.
+
 Apart from that, parameter events are not static:
 
 ```lisp
