@@ -172,7 +172,7 @@ Each node follows each other node with equal probablity ... so basically a rando
 
 ### Syntax
 ```lisp
-(fully <name> :rest <list of events> :events <labeled events>)
+(fully <name> :dur <duration> <list of events>)
 ```
 
 ### Example
@@ -180,7 +180,7 @@ Each node follows each other node with equal probablity ... so basically a rando
 ```lisp
 ;; random generator with five events
 (sx 'full #t
-    (fully 'mel :rest (saw 'a3) (saw 'f2) (saw 'c3) (saw 'e3) (saw 'a4)))
+    (fully 'mel (saw 'a3) (saw 'f2) (saw 'c3) (saw 'e3) (saw 'a4)))
 
 ```
 
