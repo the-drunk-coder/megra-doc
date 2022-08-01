@@ -1,5 +1,11 @@
 # Global Commands
 
+## `bpm` - Set Default Transition Time
+
+If no time values for the transition between events is given, 200 milliseconds are used, which corresponds to 150 beats per minute. Using the `(bpm)` command, this can be changed, i.e. if you specify 300 bpm, the default duration would be 100ms. Manually given values are not changed, they always superseed the defualt value. 
+
+If you specify a tempo modifier with `tmod`, this is changed, of course.
+
 ## `clear` - Clear Session
 
 Stops and deletes all present generators.
@@ -58,8 +64,24 @@ modify the part, you have to re-evaluate the sync context as well.
     :sample "ababaabbababcabaababaacabcabac"
     :dur 2400))
 ```
+---
+
+## `defualt-duration` - set the global default duration
+
+Same as `bpm`, but instead of beats per minute you specify a value in milliseconds.
 
 ---
+
+## `del` - Configure Global Delay Parameters
+
+Parameters: 
+
+* `:damp-freq` - dampening frequency for the delay
+* `:feedback` or `fb` - delay feedback
+* `:mix` - default ratio
+* `:time` or `:t` - delay time
+* `:rate` or `:r` - delay rate 
+
 
 ## `export-dot` - Export to DOT File
 
@@ -92,6 +114,26 @@ rendered with GraphViz.
 ```
 ---
 
+## `global-resources` or `globres` - Global Resources for Lifemodeling algorithm
+
+Specifies the pool of global resources for the primitive lifemodeling algorithm that is integrated in Mégra.
+
+---
+
+## `latency` - latency between control- and audio threads.
+
+Default is 50ms or 0.05 seconds. Value is passed in seconds.
+
+If you start Mégra from the command line, and see 'late' messages, you might want to consider using a higher latency, otherwise you don't need to touch this.
+
+---
+
+## `once` - Play an Event exactly once.
+
+`(once (sine 300 :sus 200))` plays a sine event with a sustain of 200 ms exactly once. Pretty self-explanatory.
+
+---
+
 ## `rec` - Record Session
 
 Allows you to record your session directly from Megra.
@@ -121,6 +163,15 @@ Recording format is 32-bit float WAV.
 ;; stop recording
 (stop-rec)
 ```
+---
+
+## `rev` - Configure Global Delay Parameters
+
+Parameters: 
+
+* `:damp` - dampening frequency for the reverb (not for convolution reverb)
+* `:mix` - default ratio
+* `:roomsize` - delay room size (not for convolution reverb) 
 
 
 ---
@@ -175,5 +226,24 @@ Stop recording, see above ...
 ```
 (stop-rec)
 ```
+
+## `tmod` - global time modifier
+
+You can specify a global modifier for times, i.e. to adjust timing or avoid doing all the math in your head.
+
+### Example
+
+Imagine the following code:
+```lisp
+(sx 'ba #t
+    (nuc 'fa :dur 200 (bd)))
+```
+
+This repeats the bassdrum with 200ms in between each beat. 
+
+Now, if you specify a global time modifier `(tmod 2.0)`, then the time will always be multiplied by 2, thus,
+you'll have a half-time effect.
+
+You can use dynamic parameters on tmod, like `(tmod (fade 1.0 0.3))`, but the result can be quite unpredictable.
 
 

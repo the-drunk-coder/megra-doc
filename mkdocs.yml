@@ -17,8 +17,11 @@ nav:
         - '6. Layering Generators' : 'tutorial/multiplying-generators.md'
         - '7. LFOs and Continuous Modulators' : 'tutorial/lfos-and-continuous-time-modulators.md'
         - '8. Parts and Control Events' : 'tutorial/parts-and-control-events.md'
-        - '9. Recording Your Sessions' : 'tutorial/recording.md'
-        - '10. Final Remarks' : 'tutorial/final-remarks.md'
+        - '9. Using Live Input' : 'tutorial/using-live-input.md'
+        - '10. Using Wavetables' : 'tutorial/using-wavetables.md'
+        - '11. Event Arithmetic' : 'tutorial/event-arithmetic.md'
+        - '12. Recording Your Sessions' : 'tutorial/recording.md'
+        - '13. Final Remarks' : 'tutorial/final-remarks.md'
     - 'Function Reference' :
         - 'Sound Events' : 'function-reference/sound-events.md'
         - 'Control Events' : 'function-reference/control-events.md'
