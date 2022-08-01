@@ -49,17 +49,27 @@ Live buffer events allow you to play with the live input buffer. The live input 
 work with it.
 
 ### `feedr` - read the live buffer like a regular sample
-Using `(feedr)`, you can read from the live buffer directly. All the parameters are the same as in the sample events above. Be careful 
+Using `(feedr)`, you can read from a live buffer directly. 
+The first number specifies the input buffer to read from (if there's more than one). If you don't provide the input buffer, the first one is chosen.
+
+**BUFFER NUMBERS ALWAYS START AT 1**
+
+All the parameters are the same as in the sample events above. Be careful 
 about feedback if you have an open mic !
 
 *Example*:
 ```lisp
-(sx 'ba #t ;; read from live buffer at varying starting points
-  (nuc 'fa (feedr :start (bounce 0.01 0.99))))
+(sx 'ba #t ;; read from first live buffer at varying starting points
+  (nuc 'fa (feedr 1 :start (bounce 0.01 0.99))))
 ```
 
 ### `freeze` - freeze the live buffer
-This event writes the current live buffer (as-is) to a persistent buffer specified by a number, like `(freeze 1)`.
+This event writes the current contents of a live buffer (as-is) to a persistent buffer specified by a number, like `(freeze 1)`, which writes the default input buffer (the first one) to a persistent buffer. 
+
+If you're using multiple input buffers, you can specify the source like `(freeze 1 :in 2)`, which writes the contents of buffer 2 to freeze buffer 1.
+
+**BUFFER NUMBERS ALWAYS START AT 1**
+
 If you use this in a `ctrl` event, you can periodically update the content of the frozen buffer.
 
 ```lisp
