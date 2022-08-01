@@ -9,6 +9,16 @@ Given that it's build for one specific purpose, it's not configurable at all.
 If you **don't** want to use the editor, you can start Mégra with the `-r` flag, which will start it in REPL mode. Feel free to make 
 your own plugin for your favourite editor, and let me know if you do so!
 
+## Fonts and Font Size
+
+Font and font size can be specified when starting Mégra. Included fonts are *mononoki* and *Comic Mono*. 
+
+Using the `--font` argument at startup you can specify one of the two included font names, or a path to a custom font file in ttf format.
+
+Font size is configured using the `--font-size` argument.
+
+Currently, font and font size can't be changed at runtime.
+
 ## The Sketchbook
 
 On the top of the editor, you can find a dropdown menu with your Mégra sketches, which you can find in your sketchbook folder (see the Folders section).
