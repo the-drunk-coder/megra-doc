@@ -107,4 +107,4 @@ Arithmetic operations only work if at least one parameter is a scalar ... this w
     (nuc 'fa :dur 900 (sine (linramp~ 300 400 :t 0.6) :sus 600))))
 ```
 
-So in the end it's just a partially defined arithmetic.
+Furthermore, there's no arithmetic defined on control events. So in the end it's just a partially defined arithmetic. 
