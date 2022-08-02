@@ -11,3 +11,10 @@ For both macOS and Windows, there are versions that have a `_ringbuffer` suffix.
 On Windows, it's necessary to use that version because the WASAPI audio API uses variable buffer sizes.
 
 There's no such version for Linux because with JACK, it is very easy to set the right blocksize.
+
+
+## Troubleshooting
+
+### Windows
+
+If Mégra doesn't start, try starting it from a command prompt. If it says something like "the current stream config isn't supported", try starting it with the option `--live-buffers 2` (or whatever you number of output channels is). Sometimes WASAPI doesn't support different numbers of input- and output channels.
