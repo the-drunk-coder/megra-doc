@@ -33,5 +33,12 @@ Download or clone the repo. In repo folder, type ...
 cargo run --release -- -o 2ch
 ```
 
+## Troubleshooting
+
+### Linux 
+
+If the downloaded version doesn't work, it might be because the release version is compiled against a newer version of glibc. In this case, 
+you can install it from source or use `cargo install`. It's recommended to install Rust following the instructions on `https://rust-lang.org`.
+
 
 
