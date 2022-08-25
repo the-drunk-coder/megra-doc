@@ -27,7 +27,9 @@ The filenames are separated into keywords by whitespace, dash, underscore and do
 
 If you don't provide any keyword, a random sample from the folder is chosen. Samples outside of the abovementioned samples folder can't be called.
 
-There's currently no way to specify custom sample folders at startup, but you can also load individual samples to a set by hand using 
+As of version 0.0.6, you can provide a **custom sample folder** at startup using the `--sample-folder <path-to-folder> flag.
+
+You can also load individual samples to a set by hand using 
 ```
 (load-sample :set '<set> :path "<path-to-sample>")
 ```

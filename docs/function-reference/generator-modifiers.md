@@ -1,3 +1,4 @@
+
 # Generator Modifiers
 
 ## `blur` - Blur Probabilities
@@ -109,16 +110,14 @@ a little, and adding it to the generator following certain principles.
 
 ### Parameters
 
-* `:var` (float) - variation factor (smaller -> less variation)
+* `<var>` (float) - variation factor (smaller -> less variation)
 * `:method` (symbol) - growth method/mode (see below)
-* `:durs` (list of ints) - durations to mix in
-* `:rnd` (int) - chance to add random edges after growth
 
 ### Examples
 
 ```lisp
 (sx 'al #t
-	(every :n 10 (grow) 
+	(every :n 10 (grow 0.1) 
 		(nuc 'gae (sqr 120))))
 ```
 
@@ -131,6 +130,27 @@ Each growth mode pushes the generator in a certain direction.
 * `'quadloop`
 * `'flower`
 * `'loop` 
+
+---
+
+## `grown` - Enlarge Generator
+
+Grow n times. 
+
+### Parameters
+
+* `<iterations>` (int) - number of growth iterations
+* `<var>` (float) - variation factor (smaller -> less variation)
+* `:method` (symbol) - growth method/mode (see below)
+
+### Examples
+
+```lisp
+(sx 'al #t
+	(every :n 10 (grown 5 0.1) 
+		(nuc 'gae (sqr 120))))
+```
+
 
 ---
 
