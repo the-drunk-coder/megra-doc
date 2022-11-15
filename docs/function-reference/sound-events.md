@@ -1,5 +1,29 @@
 # Sound Events, Control Events and Parameters
 
+## Filter Types
+
+Some events have configurable filters (see below).
+
+The filter types are:
+
+* `'lpf12` - 12dB/oct lowpass filter
+* `'lpf18` - 18dB/oct lowpass filter with distortion
+* `'lpf24` - 24dB/oct lowpass filter
+* `'hpf12` - 12dB/oct highpass filter
+* `'hpf24` - 24dB/oct highpass filter
+* `butter2lpf` - 2nd order Butterworth lowpass filter
+* `butter4lpf` - 4th order Butterworth lowpass filter
+* `butter6lpf` - 6th order Butterworth lowpass filter
+* `butter8lpf` - 8th order Butterworth lowpass filter
+* `butter10lpf` - 10th order Butterworth lowpass filter
+* `butter2hpf` - 2nd order Butterworth highpass filter
+* `butter4hpf` - 4th order Butterworth highpass filter
+* `butter6hpf` - 6th order Butterworth highpass filter
+* `butter8hpf` - 8th order Butterworth highpass filter
+* `butter10hpf` - 10th order Butterworth highpass filter
+* `peak` - parametric eq band
+* `none` - no filter
+
 ## Sample Events
 
 Sample events allow you to play a pre-loaded samples, using keywords to specify the sample you need.
@@ -19,27 +43,38 @@ Sample events allow you to play a pre-loaded samples, using keywords to specify 
 
 ### Parameters
 
-| Parameter | Default | Description |
-|-----------|:-------:|:-----------:|
-| `:lvl`       | 0.5     | envelope max level |
-| `:amp`       | 0.77     | sampler (oscillator) amplitude |
-| `:rate`      | 1.0     | sample playback rate |
-| `:start`     | 0.0     | start within sample file, ratio |
-| `:atk`       | 1       | gain envelope attack, in ms |
-| `:rel`       | 1       | gain envelope release, in ms |
-| `:sus`       | sample lenght, 10s max       | gain envelope sustain, in ms|
-| `:pos`       | 0.0      | stereo position (-1.0 left, 0.0 center 1.0 right) or channel number in multichannel mode |
-| `:lpf`   | 19000   | lowpass filter frequency  |
-| `:lpq`      | 0.4     | lowpass filter q factor |
-| `:lpd`   | 0.0     | lowpass filter distortion|
-| `:hpf`   | 20      | highpass filter frequency  |
-| `:hpq`      | 0.4     | highpass filter q factor |
-| `:pff`   | 1000    | peak filter frequency  |
-| `:pfq`      | 10      | peak filter q factor |
-| `:pfg`   | 0.0     | peak filter gain |
-| `:rev`       | 0.0     | reverb amount |
-| `:del`      | 0.0     | delay amount |
-| `:tags`     |none| additional tags |
+| Parameter | Default                | Description                                                                              |
+|-----------|:----------------------:|:----------------------------------------------------------------------------------------:|
+| `:lvl`    | 0.5                    | envelope max level                                                                       |
+| `:amp`    | 0.77                   | sampler (oscillator) amplitude                                                           |
+| `:rate`   | 1.0                    | sample playback rate                                                                     |
+| `:start`  | 0.0                    | start within sample file, ratio                                                          |
+| `:atk`    | 1                      | gain envelope attack, in ms                                                              |
+| `:rel`    | 1                      | gain envelope release, in ms                                                             |
+| `:sus`    | sample lenght, 10s max | gain envelope sustain, in ms                                                             |
+| `:pos`    | 0.0                    | stereo position (-1.0 left, 0.0 center 1.0 right) or channel number in multichannel mode |
+| `:lpf`    | 19000                  | lowpass filter frequency                                                                 |
+| `:lpt`    | 'lpf18                 | lowpass filter type (see filter types)                                                   |
+| `:lpq`    | 0.4                    | lowpass filter q factor                                                                  |
+| `:lpd`    | 0.0                    | lowpass filter distortion                                                                |
+| `:hpf`    | 20                     | highpass filter frequency                                                                |
+| `:hpt`    | 'hpf12                 | highpass filter type (see filter types)                                                  |
+| `:hpq`    | 0.4                    | highpass filter q factor                                                                 |
+| `:pff`    | 1000                   | peak filter 1 frequency                                                                  |
+| `:pfq`    | 10                     | peak filter 1 q factor                                                                   |
+| `:pfg`    | 0.0                    | peak filter 1 gain                                                                       |
+| `:pft`    | 'peak                  | peak filter 1 type                                                                       |
+| `:pff1`   | 1000                   | peak filter 1 frequency                                                                  |
+| `:pfq1`   | 10                     | peak filter 1 q factor                                                                   |
+| `:pfg1`   | 0.0                    | peak filter 1 gain                                                                       |
+| `:pft1`   | 'peak                  | peak filter 1 type                                                                       |
+| `:pff2`   | 1000                   | peak filter 2 frequency                                                                  |
+| `:pfq2`   | 10                     | peak filter 2 q factor                                                                   |
+| `:pfg2`   | 0.0                    | peak filter 2 gain                                                                       |
+| `:pft2`   | 'none                  | peak filter 2 type                                                                       |
+| `:rev`    | 0.0                    | reverb amount                                                                            |
+| `:del`    | 0.0                    | delay amount                                                                             |
+| `:tags`   | none                   | additional tags                                                                          |
 
 
 ## Live Buffer Events
@@ -90,9 +125,9 @@ First argument specifies the buffer to be read from: `(freezr <bufnum>)`
   (nuc 'ba :dur 100 (freezr 1 :start (bounce 0.0 1.0) :atk 1 :sus 100 :rel 100)))
 ```
 
-## Simple, Non-Bandlimited Synth Events 
+## Single-Oscillator Synth Events 
 
-These are some very naive implementations of non-bandlimited waveforms (except for the sine wave). They are pretty dirty and are not even tuned that well, but have a certain quality to them.
+These are some very naive implementations of non-bandlimited waveforms (except for the sine wave). Some are pretty dirty and are not even tuned that well, but have a certain quality to them.
 
 ### Syntax
 
@@ -108,32 +143,40 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 ```
 
 ### Types
-| Type |Description|
-|-----------|:-------:|
-| sine | simple sine wave |
-| cub  | a sine like shape made of two cubic pieces (LFCub in SuperCollider) |
-| tri  | a triangle wave |
-| sqr  | a square wave   |
-| saw  | a sawtooth wave |
+
+| Type  | Description                                                         |
+|-------|:-------------------------------------------------------------------:|
+| sine  | simple sine wave                                                    |
+| cub   | a sine like shape made of two cubic pieces (LFCub in SuperCollider) |
+| tri   | a triangle wave                                                     |
+| sqr   | a square wave                                                       |
+| saw   | a sawtooth wave                                                     |
+| fmtri | an FM approximation of a triangle wave                              |
+| fmsqr | an FM approximation of a square wave                                |
+| fmsaw | an FM approximation of a sawtooth wave                              |
 
 ### Parameters
 
-| Parameter | Default | Description |
-|-----------|:-------:|:-----------:|
-|  pitch     | 100     | pitch - might be frequency in hertz or quoted note name |
-| `:lvl`       | 0.5     | envelope level |
-| `:amp`       | 0.6     | oscillator amplitude |
-| `:atk`       | 1     | gain envelope attack, in ms |
-| `:rel`       | 100       | gain envelope release, in ms |
-| `:sus`       | 48       | gain envelope sustain, in ms |
-| `:pos`       | 0.0     | (see above) |
-| `:lpf`   | 19000   | lowpass filter frequency  |
-| `:lpq`      | 0.4     | lowpass filter q factor |
-| `:lpd`   | 0.0     | lowpass filter distortion|
-| `:rev`       | 0.0     | reverb amount |
-| `:del`      | 0.0     | delay amount |
-| `:pw`        | 0.5     | pulsewidth (ONLY `sqr`) |
-| `:tags`     |none| additional tags |
+| Parameter | Default | Description                                             |
+|-----------|:-------:|:-------------------------------------------------------:|
+| pitch     | 100     | pitch - might be frequency in hertz or quoted note name |
+| `:lvl`    | 0.5     | envelope level                                          |
+| `:amp`    | 0.6     | oscillator amplitude                                    |
+| `:atk`    | 1       | gain envelope attack, in ms                             |
+| `:rel`    | 100     | gain envelope release, in ms                            |
+| `:sus`    | 48      | gain envelope sustain, in ms                            |
+| `:pos`    | 0.0     | (see above)                                             |
+| `:lpf`    | 19000   | lowpass filter frequency                                |
+| `:lpt`    | 'lpf18  | lowpass filter type (see filter types)                  |
+| `:lpq`    | 0.4     | lowpass filter q factor                                 |
+| `:lpd`    | 0.0     | lowpass filter distortion                               |
+| `:hpf`    | 20      | highpas filter frequency                                |
+| `:hpt`    | 'hpf12  | highpass filter type (see filter types)                 |
+| `:hpq`    | 0.4     | highpass filter q factor                                |
+| `:rev`    | 0.0     | reverb amount                                           |
+| `:del`    | 0.0     | delay amount                                            |
+| `:pw`     | 0.5     | pulsewidth (ONLY `sqr`)                                 |
+| `:tags`   | none    | additional tags                                         |
 
 ## Risset Event
 
@@ -151,29 +194,28 @@ A simple risset bell event.
 ```
 ### Parameters
 
-| Parameter | Default | Description |
-|-----------|:-------:|:-----------:|
-|  pitch    | 100     | pitch - might be frequency in hertz or quoted note name |
-| `:lvl`    | 0.5     | gain level |
-| `:atk`    | 5       | gain envelope attack, in ms |
-| `:dec`       | 20       | gain envelope decay, in ms |
-| `:sus`       | 50       | gain envelope sustain, in ms |
-| `:rel`       | 5       | gain envelope release, in ms |
-| `:pos`       | 0.0     | see above |
-| `:lpf`   | 19000   | lowpass filter frequency  |
-| `:lpq`      | 0.4     | lowpass filter q factor |
-| `:lpd`   | 0.0     | lowpass filter distortion|
-| `:rev`       | 0.0     | reverb amount |
-| `:del`      | 0.0     | echo amount |
-| `:tags`     |none| additional tags |
+| Parameter | Default | Description                                             |
+|-----------|:-------:|:-------------------------------------------------------:|
+| pitch     | 100     | pitch - might be frequency in hertz or quoted note name |
+| `:lvl`    | 0.5     | gain level                                              |
+| `:atk`    | 5       | gain envelope attack, in ms                             |
+| `:dec`    | 20      | gain envelope decay, in ms                              |
+| `:sus`    | 50      | gain envelope sustain, in ms                            |
+| `:rel`    | 5       | gain envelope release, in ms                            |
+| `:pos`    | 0.0     | see above                                               |
+| `:lpf`    | 19000   | lowpass filter frequency                                |
+| `:lpt`    | 'lpf18  | lowpass filter type (see filter types)                  |
+| `:lpq`    | 0.4     | lowpass filter q factor                                 |
+| `:lpd`    | 0.0     | lowpass filter distortion                               |
+| `:rev`    | 0.0     | reverb amount                                           |
+| `:del`    | 0.0     | echo amount                                             |
+| `:tags`   | none    | additional tags                                         |
 
 ## Wavetable Synth
 
 The wavetable synth is exactly that. 
 
 ### Example
-
-
 
 ## Wavematrix Synth
 
