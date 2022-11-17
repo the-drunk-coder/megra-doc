@@ -1,6 +1,6 @@
 # Folders
 
-Mégra uses some special system folders for sketches (aka Mégra files), samples, and recordings. Currently, these folders are not configurable. If they don't exist, they are created on the first startup.
+Mégra uses some special system folders for sketches (aka Mégra files), samples, and recordings. If they don't exist, they are created on the first startup.
 
 ## Sketchbook Folder
 
@@ -19,3 +19,15 @@ Mégra uses some special system folders for sketches (aka Mégra files), samples
 * Linux: `~/.config/megra/recordings`
 * Windows: `C:\Users\<username>\AppData\Roaming\parkellipsen\megra\config\recordings`
 * macOS: `/Users/<username>/Library/Application Support/de.parkellipsen.megra/recordings`
+
+# Custom Base Folder
+
+The three folders mentioned about are always in the default location, but if you want to use a different "base" folder, you can specify it at startup:
+
+```
+megra_rs --base <different/base/folder>
+```
+
+Make sure that folder exists.
+
+The three abovementioned folders will be created in there if they don't exist yet.
