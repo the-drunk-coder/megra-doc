@@ -11,18 +11,29 @@ The filter types are:
 * `'lpf24` - 24dB/oct lowpass filter
 * `'hpf12` - 12dB/oct highpass filter
 * `'hpf24` - 24dB/oct highpass filter
-* `butter2lpf` - 2nd order Butterworth lowpass filter
-* `butter4lpf` - 4th order Butterworth lowpass filter
-* `butter6lpf` - 6th order Butterworth lowpass filter
-* `butter8lpf` - 8th order Butterworth lowpass filter
-* `butter10lpf` - 10th order Butterworth lowpass filter
-* `butter2hpf` - 2nd order Butterworth highpass filter
-* `butter4hpf` - 4th order Butterworth highpass filter
-* `butter6hpf` - 6th order Butterworth highpass filter
-* `butter8hpf` - 8th order Butterworth highpass filter
-* `butter10hpf` - 10th order Butterworth highpass filter
-* `peak` - parametric eq band
-* `none` - no filter
+* `'butter2lpf` - 2nd order Butterworth lowpass filter
+* `'butter4lpf` - 4th order Butterworth lowpass filter
+* `'butter6lpf` - 6th order Butterworth lowpass filter
+* `'butter8lpf` - 8th order Butterworth lowpass filter
+* `'butter10lpf` - 10th order Butterworth lowpass filter
+* `'butter2hpf` - 2nd order Butterworth highpass filter
+* `'butter4hpf` - 4th order Butterworth highpass filter
+* `'butter6hpf` - 6th order Butterworth highpass filter
+* `'butter8hpf` - 8th order Butterworth highpass filter
+* `'butter10hpf` - 10th order Butterworth highpass filter
+* `'peak` - parametric eq band
+* `'none` - no filter
+
+## Envelope Types
+
+Some events have configurable envelope types (see below).
+
+The envelope types are:
+
+* `'lin` - linear envelope segment
+* `'log` - logarithmic envelope segment
+* `'exp` - exponential envelope segment
+* `'sin` and `'cos` - sinosoidal envelope segments
 
 ## Sample Events
 
@@ -50,8 +61,12 @@ Sample events allow you to play a pre-loaded samples, using keywords to specify 
 | `:rate`   | 1.0                    | sample playback rate                                                                     |
 | `:start`  | 0.0                    | start within sample file, ratio                                                          |
 | `:atk`    | 1                      | gain envelope attack, in ms                                                              |
+| `:dec`    | 1                      | gain envelope decay, in ms (using this turns the envelope into ADSR, otherwise it's ASR) |
 | `:rel`    | 1                      | gain envelope release, in ms                                                             |
 | `:sus`    | sample lenght, 10s max | gain envelope sustain, in ms                                                             |
+| `:atkt`   | attack type            | (see envelope types)                                                                     |
+| `:dect`   | decay type             | (see envelope types)                                                                     |
+| `:relt`   | release type           | (see envelope types)                                                                     |
 | `:pos`    | 0.0                    | stereo position (-1.0 left, 0.0 center 1.0 right) or channel number in multichannel mode |
 | `:lpf`    | 19000                  | lowpass filter frequency                                                                 |
 | `:lpt`    | 'lpf18                 | lowpass filter type (see filter types)                                                   |
@@ -132,7 +147,7 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 ### Syntax
 
 ```lisp 
-(sine|saw|sqr|cub|tri <pitch> <keyword parameters>)
+(sine|saw|sqr|cub|tri|fmtri|fmsaw|fmsqr <pitch> <keyword parameters>)
 ```
 
 ### Example
@@ -157,26 +172,30 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 
 ### Parameters
 
-| Parameter | Default | Description                                             |
-|-----------|:-------:|:-------------------------------------------------------:|
-| pitch     | 100     | pitch - might be frequency in hertz or quoted note name |
-| `:lvl`    | 0.5     | envelope level                                          |
-| `:amp`    | 0.6     | oscillator amplitude                                    |
-| `:atk`    | 1       | gain envelope attack, in ms                             |
-| `:rel`    | 100     | gain envelope release, in ms                            |
-| `:sus`    | 48      | gain envelope sustain, in ms                            |
-| `:pos`    | 0.0     | (see above)                                             |
-| `:lpf`    | 19000   | lowpass filter frequency                                |
-| `:lpt`    | 'lpf18  | lowpass filter type (see filter types)                  |
-| `:lpq`    | 0.4     | lowpass filter q factor                                 |
-| `:lpd`    | 0.0     | lowpass filter distortion                               |
-| `:hpf`    | 20      | highpas filter frequency                                |
-| `:hpt`    | 'hpf12  | highpass filter type (see filter types)                 |
-| `:hpq`    | 0.4     | highpass filter q factor                                |
-| `:rev`    | 0.0     | reverb amount                                           |
-| `:del`    | 0.0     | delay amount                                            |
-| `:pw`     | 0.5     | pulsewidth (ONLY `sqr`)                                 |
-| `:tags`   | none    | additional tags                                         |
+| Parameter | Default      | Description                                                                              |
+|-----------|:------------:|:----------------------------------------------------------------------------------------:|
+| pitch     | 100          | pitch - might be frequency in hertz or quoted note name                                  |
+| `:lvl`    | 0.5          | envelope level                                                                           |
+| `:amp`    | 0.6          | oscillator amplitude                                                                     |
+| `:atk`    | 1            | gain envelope attack, in ms                                                              |
+| `:dec`    | 1            | gain envelope decay, in ms (using this turns the envelope into ADSR, otherwise it's ASR) |
+| `:rel`    | 100          | gain envelope release, in ms                                                             |
+| `:sus`    | 48           | gain envelope sustain, in ms                                                             |
+| `:atkt`   | attack type  | (see envelope types)                                                                     |
+| `:dect`   | decay type   | (see envelope types)                                                                     |
+| `:relt`   | release type | (see envelope types)                                                                     |
+| `:pos`    | 0.0          | (see above)                                                                              |
+| `:lpf`    | 19000        | lowpass filter frequency                                                                 |
+| `:lpt`    | 'lpf18       | lowpass filter type (see filter types)                                                   |
+| `:lpq`    | 0.4          | lowpass filter q factor                                                                  |
+| `:lpd`    | 0.0          | lowpass filter distortion                                                                |
+| `:hpf`    | 20           | highpas filter frequency                                                                 |
+| `:hpt`    | 'hpf12       | highpass filter type (see filter types)                                                  |
+| `:hpq`    | 0.4          | highpass filter q factor                                                                 |
+| `:rev`    | 0.0          | reverb amount                                                                            |
+| `:del`    | 0.0          | delay amount                                                                             |
+| `:pw`     | 0.5          | pulsewidth (ONLY `sqr`)                                                                  |
+| `:tags`   | none         | additional tags                                                                          |
 
 ## Risset Event
 
@@ -213,13 +232,65 @@ A simple risset bell event.
 
 ## Wavetable Synth
 
-The wavetable synth is exactly that. 
+The wavetable synth (`wtab`) is a simple wavetable synth that allows you to create and manipulate a single wavetable "by hand" using the `:wt` argument.
+
+Here's a simple sawtooth wavetable, where the 9-point wavetable is just the list of values after the `:wt` argument.
+
+```lisp
+(sx 'ba #t 
+  (nuc 'ta (wtab 200 :wt 1 0.75 0.5 0.25 0 -0.25 -0.5 -0.75 -1)))
+```
+
+The cool thing is that every value can be a discrete dynamic parameter. This way, there's plenty of options to 
+modify the overtone spectrum over time:
+
+```lisp
+;; the uneven ratio of the steps makes things more interesting
+(sx 'ba #t 
+  (nuc 'ta (wtab 200 :wt 
+      (bounce 1 -1 :steps 90) 
+      (bounce 0.75 -0.75 :steps 160) 
+      (bounce 0.5 -0.5 :steps 210) 
+      (bounce 0.25 -0.25 :steps 270) 
+      0 
+      (bounce -0.25 0.25 :steps 270) 
+      (bounce -0.5 0.5 :steps 220)  
+      (bounce -0.75 0.75 :steps 160) 
+      (bounce -1 1 :steps 90))))
+```
+
+Interpolation for the wavetables is 3rd-order hermite. All other parameters are the same as on the single-oscillator synth above.
 
 ### Example
 
 ## Wavematrix Synth
 
-The wavematrix synth is a powerful synth in the style of "spectral morphing" synths such as Vital or Serum. 
+The wavematrix (`wmat`) synth is a powerful synth in the style of "spectral morphing" synths such as Vital or Serum. 
+
+It allows you to do more complex synthesis from 2D wavetables. Those could theoretically be written by hand as well,
+even though it'd be quite tedious. Thus, you can generate the wavetables from a random wavefile:
+
+```lisp
+;; load wavematrix from a bassoon sample,
+;; slice it into a 16x256 matrix
+;; the default slicing algorithm tries to avoid 
+;; artifacts as much as possible
+(load-wavematrix 
+  :key 'bass
+  :path "PATH-TO/bassoon_a1.flac"
+  :size 16 256
+  :start 0.2)
+  
+;; make sure the table index (ti) is within range (0-15)
+(sx 'ba #t 
+  (nuc 'fu :dur 400 
+    (wmat 100 :sus 300 :wm 'bass 
+      :ti 4 ;; either specify table index by hand or use an lfo, ramp, etc
+	  ;;(lfo~ :init 7 :range 5 :freq 0.2 :op 'add)
+	  )))
+```
+
+Interpolation for the wavetables is 3rd-order hermite. All other parameters are the same as on the single-oscillator synth above.
 
 ## A Note about Note Names
 Note names follow the Common Music 2.x convention, where `'a4` is the concert pitch of 440hz, above the *middle c* which is `'c4`. `'cs4` denotes a sharp note, `'cf4` denotes a flat note. The sharp/flat schema is consistent over all notes.
