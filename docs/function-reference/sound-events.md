@@ -268,7 +268,20 @@ modify the overtone spectrum over time:
 The wavematrix (`wmat`) synth is a powerful synth in the style of "spectral morphing" synths such as Vital or Serum. 
 
 It allows you to do more complex synthesis from 2D wavetables. Those could theoretically be written by hand as well,
-even though it'd be quite tedious. Thus, you can generate the wavetables from a random wavefile:
+even though it'd be quite tedious. Thus, you can generate the wavetables from a random wavefile using the `load-wavematrix`
+function:
+
+```
+;; load wavematrix from a bassoon sample,
+;; slice it into a 16x256 matrix
+;; the default slicing algorithm tries to avoid 
+;; artifacts as much as possible
+(load-wavematrix 
+  :key 'bass
+  :path "PATH-TO/bassoon_a1.flac"
+  :size 16 256
+  :start 0.2)
+```
 
 Interpolation for the wavetables is 3rd-order hermite. All other parameters are the same as on the single-oscillator synth above.
 
