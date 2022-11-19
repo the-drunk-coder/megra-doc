@@ -234,6 +234,10 @@ A simple risset bell event.
 
 The wavetable synth (`wtab`) is a simple wavetable synth that allows you to create and manipulate a single wavetable "by hand" using the `:wt` argument.
 
+Interpolation for the wavetables is 3rd-order hermite. All other parameters are the same as on the single-oscillator synth above.
+
+### Example
+
 Here's a simple sawtooth wavetable, where the 9-point wavetable is just the list of values after the `:wt` argument.
 
 ```lisp
@@ -259,16 +263,16 @@ modify the overtone spectrum over time:
       (bounce -1 1 :steps 90))))
 ```
 
-Interpolation for the wavetables is 3rd-order hermite. All other parameters are the same as on the single-oscillator synth above.
-
-### Example
-
 ## Wavematrix Synth
 
 The wavematrix (`wmat`) synth is a powerful synth in the style of "spectral morphing" synths such as Vital or Serum. 
 
 It allows you to do more complex synthesis from 2D wavetables. Those could theoretically be written by hand as well,
 even though it'd be quite tedious. Thus, you can generate the wavetables from a random wavefile:
+
+Interpolation for the wavetables is 3rd-order hermite. All other parameters are the same as on the single-oscillator synth above.
+
+### Example
 
 ```lisp
 ;; load wavematrix from a bassoon sample,
@@ -289,8 +293,6 @@ even though it'd be quite tedious. Thus, you can generate the wavetables from a 
 	  ;;(lfo~ :init 7 :range 5 :freq 0.2 :op 'add)
 	  )))
 ```
-
-Interpolation for the wavetables is 3rd-order hermite. All other parameters are the same as on the single-oscillator synth above.
 
 ## A Note about Note Names
 Note names follow the Common Music 2.x convention, where `'a4` is the concert pitch of 440hz, above the *middle c* which is `'c4`. `'cs4` denotes a sharp note, `'cf4` denotes a flat note. The sharp/flat schema is consistent over all notes.
