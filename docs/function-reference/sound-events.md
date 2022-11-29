@@ -54,42 +54,42 @@ Sample events allow you to play a pre-loaded samples, using keywords to specify 
 
 ### Parameters
 
-| Parameter | Default                | Description                                                                              |
-|-----------|:----------------------:|:----------------------------------------------------------------------------------------:|
-| `:lvl`    | 0.5                    | envelope max level                                                                       |
-| `:amp`    | 0.77                   | sampler (oscillator) amplitude                                                           |
-| `:rate`   | 1.0                    | sample playback rate                                                                     |
-| `:start`  | 0.0                    | start within sample file, ratio                                                          |
-| `:atk`    | 1                      | gain envelope attack, in ms                                                              |
-| `:dec`    | 1                      | gain envelope decay, in ms (using this turns the envelope into ADSR, otherwise it's ASR) |
-| `:rel`    | 1                      | gain envelope release, in ms                                                             |
-| `:sus`    | sample lenght, 10s max | gain envelope sustain, in ms                                                             |
-| `:atkt`   | attack type            | (see envelope types)                                                                     |
-| `:dect`   | decay type             | (see envelope types)                                                                     |
-| `:relt`   | release type           | (see envelope types)                                                                     |
-| `:pos`    | 0.0                    | stereo position (-1.0 left, 0.0 center 1.0 right) or channel number in multichannel mode |
-| `:lpf`    | 19000                  | lowpass filter frequency                                                                 |
-| `:lpt`    | 'lpf18                 | lowpass filter type (see filter types)                                                   |
-| `:lpq`    | 0.4                    | lowpass filter q factor                                                                  |
-| `:lpd`    | 0.0                    | lowpass filter distortion                                                                |
-| `:hpf`    | 20                     | highpass filter frequency                                                                |
-| `:hpt`    | 'hpf12                 | highpass filter type (see filter types)                                                  |
-| `:hpq`    | 0.4                    | highpass filter q factor                                                                 |
-| `:pff`    | 1000                   | peak filter 1 frequency                                                                  |
-| `:pfq`    | 10                     | peak filter 1 q factor                                                                   |
-| `:pfg`    | 0.0                    | peak filter 1 gain                                                                       |
-| `:pft`    | 'peak                  | peak filter 1 type                                                                       |
-| `:pff1`   | 1000                   | peak filter 1 frequency                                                                  |
-| `:pfq1`   | 10                     | peak filter 1 q factor                                                                   |
-| `:pfg1`   | 0.0                    | peak filter 1 gain                                                                       |
-| `:pft1`   | 'peak                  | peak filter 1 type                                                                       |
-| `:pff2`   | 1000                   | peak filter 2 frequency                                                                  |
-| `:pfq2`   | 10                     | peak filter 2 q factor                                                                   |
-| `:pfg2`   | 0.0                    | peak filter 2 gain                                                                       |
-| `:pft2`   | 'none                  | peak filter 2 type                                                                       |
-| `:rev`    | 0.0                    | reverb amount                                                                            |
-| `:del`    | 0.0                    | delay amount                                                                             |
-| `:tags`   | none                   | additional tags                                                                          |
+| Parameter | Default                | Description                                                                              | Modulatable |
+|-----------|:----------------------:|:----------------------------------------------------------------------------------------:|-------------|
+| `:lvl`    | 0.5                    | envelope max level                                                                       | yes         |
+| `:amp`    | 0.77                   | sampler (oscillator) amplitude                                                           | yes         |
+| `:rate`   | 1.0                    | sample playback rate                                                                     | yes         |
+| `:start`  | 0.0                    | start within sample file, ratio                                                          |             |
+| `:atk`    | 1                      | gain envelope attack, in ms                                                              |             |
+| `:dec`    | 1                      | gain envelope decay, in ms (using this turns the envelope into ADSR, otherwise it's ASR) |             |
+| `:rel`    | 1                      | gain envelope release, in ms                                                             |             |
+| `:sus`    | sample lenght, 10s max | gain envelope sustain, in ms                                                             |             |
+| `:atkt`   | attack type            | (see envelope types)                                                                     |             |
+| `:dect`   | decay type             | (see envelope types)                                                                     |             |
+| `:relt`   | release type           | (see envelope types)                                                                     |             |
+| `:pos`    | 0.0                    | stereo position (-1.0 left, 0.0 center 1.0 right) or channel number in multichannel mode | yes         |
+| `:lpf`    | 19000                  | lowpass filter frequency                                                                 | yes         |
+| `:lpt`    | 'lpf18                 | lowpass filter type (see filter types)                                                   |             |
+| `:lpq`    | 0.4                    | lowpass filter q factor                                                                  | yes         |
+| `:lpd`    | 0.0                    | lowpass filter distortion                                                                | yes         |
+| `:hpf`    | 20                     | highpass filter frequency                                                                | yes         |
+| `:hpt`    | 'hpf12                 | highpass filter type (see filter types)                                                  |             |
+| `:hpq`    | 0.4                    | highpass filter q factor                                                                 | yes         |
+| `:pff`    | 1000                   | peak filter 1 frequency                                                                  | yes         |
+| `:pfq`    | 10                     | peak filter 1 q factor                                                                   | yes         |
+| `:pfg`    | 0.0                    | peak filter 1 gain                                                                       | yes         |
+| `:pft`    | 'peak                  | peak filter 1 type                                                                       |             |
+| `:pff1`   | 1000                   | peak filter 1 frequency                                                                  | yes         |
+| `:pfq1`   | 10                     | peak filter 1 q factor                                                                   | yes         |
+| `:pfg1`   | 0.0                    | peak filter 1 gain                                                                       | yes         |
+| `:pft1`   | 'peak                  | peak filter 1 type                                                                       |             |
+| `:pff2`   | 1000                   | peak filter 2 frequency                                                                  | yes         |
+| `:pfq2`   | 10                     | peak filter 2 q factor                                                                   | yes         |
+| `:pfg2`   | 0.0                    | peak filter 2 gain                                                                       | yes         |
+| `:pft2`   | 'none                  | peak filter 2 type                                                                       |             |
+| `:rev`    | 0.0                    | reverb amount                                                                            | yes         |
+| `:del`    | 0.0                    | delay amount                                                                             | yes         |
+| `:tags`   | none                   | additional tags                                                                          |             |
 
 
 ## Live Buffer Events
@@ -147,7 +147,7 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 ### Syntax
 
 ```lisp 
-(sine|saw|sqr|cub|tri|fmtri|fmsaw|fmsqr <pitch> <keyword parameters>)
+(sine|saw|sqr|cub|tri|fmtri|fmsaw|fmsqr|white|brown <pitch> <keyword parameters>)
 ```
 
 ### Example
@@ -169,6 +169,8 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | fmtri | an FM approximation of a triangle wave                              |
 | fmsqr | an FM approximation of a square wave                                |
 | fmsaw | an FM approximation of a sawtooth wave                              |
+| white | white noise                                                         |
+| brown | brown noise                                                         |
 
 ### Parameters
 
