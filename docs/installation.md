@@ -12,19 +12,21 @@ On Linux and macOS, you'll probably need to make the file executable by calling 
 
 ## With Cargo
 
-If you already use `rust` and `cargo`, you can install the latest relase from crates.io.
+On Linux, I recommend this method ... install `cargo` from your distro's package manager, then install Mégra with `cargo`.
 
-On Linux, I recommend this method ... install cargo from you package manager, then install Mégra with cargo.
+If you already use `rust` and `cargo` (on any system), you can install the latest relase from crates.io.
 
 In a terminal, type:
 ```
 cargo install megra_rs
 ```
+
 On **Windows**, you'll need the ringbuffer feature, so type:
 ```bash
 cargo install megra_rs --features ringbuffer
 ```
 
+The ringbuffer version might have a slightly higher latency, but is way less complicated to use on any system.
 Please read the chapter about audio configuration to see what the ringbuffer feature does.
 
 ### Low-Latency Build
