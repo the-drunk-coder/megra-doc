@@ -32,8 +32,8 @@ Please read the chapter about audio configuration to see what the ringbuffer fea
 ### Low-Latency Build
 
 As of version 0.0.6, you can build Mégra with lower latency by using a smaller blocksize of 128. This will
-work only on Linux or macOS, or, but not with WASAPI on windows. To do so, install or build with the feature
-`low_latency` enabled:
+work only on Linux or macOS, but not with WASAPI on Windows (probably with ASIO, but I never tried that). 
+To do so, install or build with the feature `low_latency` enabled:
 
 ```bash
 cargo install megra_rs --features low_latency
