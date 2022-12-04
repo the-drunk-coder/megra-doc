@@ -34,15 +34,27 @@ You can also load individual samples to a set by hand using
 (load-sample :set '<set> :path "<path-to-sample>")
 ```
 
-You can also load a folder with samples that follows the correct structure ... i.e. if you're already using TidalCycles, and have the Dirt-Samples collection
+These don't need to be in the samples folder, the path can point anywhere.
+
+Additionally, you can load a folder with samples that follows the correct structure ... i.e. if you're already using TidalCycles, and have the Dirt-Samples collection
 somewhere, you can import it using:
 
 ```
 (load-sample-sets "/<path-to-parent>/Dirt-Samples")
 ```
+
+**IF you're using the (default) Dirt-Samples**, keep in mind that sample naming in TidalCycles is very different (it uses numbers instead of keywords), 
+so you might not be able to get fine-grained control over which samples are chosen.
+
 Mégra currently doesn't allow function names that start with a digit, so in case there's folders that start with one (such as the *808hc* and so on), 
 the set will be available with an underscore: `(once (_808hc))`.
 
-These don't need to be in the samples folder, the path can point anywhere.
+As mentioned above, make sure you configure your audio system to the samplerate of your samples, otherwise loading samples will be slow due to resampling !
 
-As mentioned above, make sure you cofigure your audio system to the samplerate of your samples, otherwise loading samples will be slow due to resampling !
+## Maximum Number of Samples
+
+As of now, Mégra load all samples to memory, which means that it takes some time at startup. 
+
+Up to Mégra 0.0.6, the maximum number of samples you can load is 3000, which might not be enough for some collections, i.e. the entire Dirt-Samples collection.
+
+Starting with Mégra 0.0.7, you can increase the number using the `--max-sample-buffers` startup option.
