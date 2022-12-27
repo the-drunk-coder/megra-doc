@@ -27,6 +27,7 @@ nav:
     - 'Function Reference' :
         - 'Sound Events' : 'function-reference/sound-events.md'
         - 'Control Events' : 'function-reference/control-events.md'
+        - 'Arithmetic Events' : 'function-reference/arithmetic-events.md'
         - 'Sequence Generators' : 'function-reference/sequence-generators.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
         - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
