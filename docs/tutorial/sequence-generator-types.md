@@ -52,7 +52,32 @@ We've already seen this above in the introduction of contexts. The `loop` genera
   (loop 'bells :dur 400 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5")) 
 ```
 
+The 'loop' function takes a string as an argument that describes a loople. If you already know TidalLooples, the concept is borrowed from that. It is a little sequencing language of its own. 
 
+So far everything has been very deterministic, so what's all the stochastic talk in the readme about ?
+Well, take a look at this:
+
+```lisp
+(sx 'trololo #t 
+  (loop 'bells :rep 70 :max-rep 4 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5")) 
+```
+
+Doesn't sound as predictable, does it ? So what do the keyword arguments do ? The 'rep' keyword defines
+the chance of an event to be repeated (70% chance in this case). The 'max-rep' keyword specifies the 
+maximum number of repetitions.  
+
+For the sake of visualization, let's reduce the number of repetitions:
+
+```lisp
+(sx 'trololo #t 
+  (loop 'bells :rep 70 :max-rep 2 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5")) 
+```
+
+Now, let's see what this markov chain looks like as a graph:
+
+```lisp
+(export-dot "trololo" :live 'trololo 'bells)
+```
 
 You'll now find a file called "trololo_trololo_bells.dot" in the folder you started Mégra from.
 Run `$ neato -Tsvg trololo_trololo_bells.dot -o trololo_trololo_bells.svg` to render an SVG file that you
@@ -65,7 +90,7 @@ For a full description, see the entry in the function reference !
 
 ## The Inference Generator
 
-The loop generator is good to create more or less repetetive sequences from abstract descriptions,
+The loop generator is good to create more or less repetetive sequences from abstract descriptions ,
 But what if you want something more controlled ? If you want to create generators from a set of rules, the 'infer' 
 generator will take them and infer a generator from them. This is also a good opportunity to explain what the markov
 chains (of probabilistic finite automata, PFA for short) are doing.
