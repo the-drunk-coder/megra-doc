@@ -1,12 +1,14 @@
-# Sequence Generators & Contexts
+# Sounds in Context
 
-Now we need to put things into context. Everything in Mégra runs inside a context where different sequences (or sequence generators) are synchronized. 
+To organize sounds, we need to put things into context. Everything in Mégra runs inside a "context" where different sequences (or sequence generators) are synchronized. 
 That's why it's a "Sync-conteXt", or "sx" for short. "Synchronization" here refers to to the generators being started at the same time. 
 If they run at different speeds (more on that later), they won't stay synchronized.
 
 A sync context needs a **name** and a **flag** that tells it whether it should be running or not. 
 
-Everything that follows are **sequence generators**. A **sequence generator** generates a sequence of sound (or control) events, hence the name.
+Sound in Mégra is predominantly organized by putting sound events in a sequence with the help of sequence generators.
+
+Thus, inside the context are **sequence generators**. A **sequence generator** generates a sequence of sound (or control) events, hence the name.
 
 ```lisp
 ;; This is a comment ... everything behind ;; will be ignored.
@@ -79,10 +81,8 @@ that is emitted by the generator has a bunch of tags, which contain the name of 
 generator, the event type, and, in case of sample events, the search tags (more about that later). 
 The block and solo keywords activate filters that act on these tags.
 
-# Sequence Generator Types
+# Some Sequence Generators Types
 
-If the sync context is a sink for events, then we need a source. That's what 
-the sequence generators are for.
 We've already seen one type of generator, the loop generator. There are several more.
 Each sequence generator is fundamentally a *Markov chain* that behaves in a certain way,
 depending on how it is created. A sequence generator can behave **non-deterministically**, but
@@ -93,9 +93,8 @@ You can visualize the Markov chains, as they can easily be represented as a grap
 For that end, you need graphviz (https://graphviz.org/) installed! (more later as we go)
 
 Let's look at some generators now. For a complete list, see the 'Sequence Generator' section
-in the function reference below. As already mentioned, each generator needs an identifier.
-This is so that we can adress them for visualization, and keep their state over the 
-various executions.
+in the 'Function Reference' section below. As already mentioned, each generator needs an identifier.
+This is so that we can adress them for visualization, and keep their state over the various executions.
 
 ## The Nucleus Generator
 
@@ -131,20 +130,6 @@ you can specify the time in milliseconds (the defualt time is 200ms):
 (sx 'trololo # ;; much faster and uneven
 	(loop 'bells (risset 'a4) 100 (~) 100 (risset 'a6) (~) 100 (risset 'a4) (~) 300 (risset 'c5) 100 (risset 'e5)))
 ```
-
-Now, let's see what this markov chain looks like as a graph:
-
-```lisp
-(export-dot "trololo" :live 'trololo 'bells) ;; export while it's running ...
-```
-
-You'll now find a file called "trololo_trololo_bells.dot" in the folder you started Mégra from.
-Run `$ neato -Tsvg trololo_trololo_bells.dot -o trololo_trololo_bells.svg` to render an SVG file that you
-can run in your browser. You should see the markov chain represented as a graph, where you can see all
-the repetitions, etc. Try different settings and see what they look like !
-
-Because of its capacity to create repetetive sequences, the loop generator is perfect for creating 
-beats and so on. 
 
 For a full description, see the entry in the function reference !
 

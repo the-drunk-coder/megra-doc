@@ -1,33 +1,60 @@
 # Using (and Finding) Samples
 
-If you don't already have a sample set at hand, some samples (enough to follow the documentation and tutorial) can be found here: https://github.com/the-drunk-coder/megra-public-samples
+## Tutorial Sample Set 
 
-Mégra currently supports samples in FLAC or (as of version 0.0.6) WAV format. Mégra uses **mono** samples, stereo samples are not supported. If you load a stereo file, it'll be **downmixed to mono**. If your samples are in a different samplerate that the one you started Mégra with, they'll be re-sampled to the current samplerate.
+If you want to use the tutorial sample set, all you need to do is to run the command `(import-sample-set 'tutorial)` the first time you start Mégra. This will download a minimal set of samples that will get you through the tutorial.
 
-Place the samples in the folder (folder will be created at first start):
+If you want to use your own samples, you can either:
+
+* add them to the default folder
+* point Mégra to a sample folder at startup
+* load samples on demand while Mégra is running
+
+## Maximum Number of Samples
+
+As of now, Mégra **loads all samples to memory**, which means that it takes some time to load them at startup. That also means that there's a limitation on how many samples you can load for one session. If your sample set is huge and maxes out your device's RAM, you'll need to select a smaller subset. 
+
+Up to Mégra 0.0.6, the maximum number of samples you can load is 3000, which might not be enough for some collections, i.e. the entire Dirt-Samples collection.
+
+Starting with Mégra 0.0.7, you can increase the number using the `--max-sample-buffers` startup option.
+
+## Sample Format
+
+Mégra currently supports samples in FLAC or (as of version 0.0.6) WAV format. Per default, Mégra uses **mono** samples. If you load a stereo file, it'll be **downmixed to mono**. In case you want to use stereo files, you need to enable this feature at startup using the `--use-stereo-samples` option.
+
+If your samples are in a different samplerate that the one you started Mégra with, they'll be re-sampled to the current samplerate.
+
+## Default Folder, Sample Set Structure and Naming Convention
+
+The default folder for samples (folder will be created at first start) can be found at:
 
     Linux: ~/.config/megra/samples.
     Windows: C:\Users\<username>\AppData\Roaming\parkellipsen\megra\config\samples
     macOS: /Users/<username>/Library/Application Support/de.parkellipsen.megra/samples
 
-Now you'll have a sound event for every sample. That means, if you have a folder called bd in the samples folder, you can call it like this:
+In there, you'll find several sub-folders. By convention, Mégra will read each folder as a possible sound event.
+That means, if you have a sub-folder called `bd` in the samples folder, you can call it as a sound event like this:
 
 ```
 ;; call this in the Mégra editor (place cursor between outer parenthesis and hit "Ctrl+Return")
 (once (bd))
 ```
 
-You can also search by keyword ... if you have a sample called `jazz.flac` in your bd folder, you can call it like:
+You can call specific files from the folder by keyword. For example, if you have a sample called `jazzy.flac` in your `bd` folder, you can call it like this:
 
 ```
-(once (bd 'jazz))
+(once (bd 'jazzy))
 ```
 
 The filenames are separated into keywords by whitespace, dash, underscore and dot. Thus, if your sample is called `ultimate jazz-bassdrum.latest.flac`, they keywords will be `ultimate`, `jazz`, `bassdrum` and `latest`. 
 
 If you don't provide any keyword, a random sample from the folder is chosen. Samples outside of the abovementioned samples folder can't be called.
 
-As of version 0.0.6, you can provide a **custom sample folder** at startup using the `--sample-folder <path-to-folder> flag.
+### Custom Sample Folder 
+
+As of version 0.0.6, you can provide a **custom sample folder** at startup using the `--sample-folder <path-to-folder>` flag.
+
+### Loading Samples at Runtime
 
 You can also load individual samples to a set by hand using 
 ```
@@ -43,18 +70,11 @@ somewhere, you can import it using:
 (load-sample-sets "/<path-to-parent>/Dirt-Samples")
 ```
 
-**IF you're using the (default) Dirt-Samples**, keep in mind that sample naming in TidalCycles is very different (it uses numbers instead of keywords), 
-so you might not be able to get fine-grained control over which samples are chosen.
+**IF you're using the (default) Dirt-Samples**, keep in mind that sample selection in TidalCycles is very different 
+(TidalCycles indexes on sort order instead of keywords), so the level of control you have over which samples are chosen will depend on the filenames, and 
+whether they can be parsed as keywords. Otherwise, you would need to know the entire file name to call a specific sample.
 
-Mégra currently doesn't allow function names that start with a digit, so in case there's folders that start with one (such as the *808hc* and so on), 
+Mégra currently doesn't allow function names that start with a digit, so in case there are folders that start with one (such as the *808hc* and so on), 
 the set will be available with an underscore: `(once (_808hc))`.
 
-As mentioned above, make sure you configure your audio system to the samplerate of your samples, otherwise loading samples will be slow due to resampling !
-
-## Maximum Number of Samples
-
-As of now, Mégra load all samples to memory, which means that it takes some time at startup. 
-
-Up to Mégra 0.0.6, the maximum number of samples you can load is 3000, which might not be enough for some collections, i.e. the entire Dirt-Samples collection.
-
-Starting with Mégra 0.0.7, you can increase the number using the `--max-sample-buffers` startup option.
+As mentioned above, make sure you configure your audio system to the samplerate of your samples, otherwise loading samples will be slow due to resampling!

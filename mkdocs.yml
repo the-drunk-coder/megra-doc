@@ -10,8 +10,8 @@ nav:
         - 'The Editor' : 'editor.md'
     - 'Tutorial':
         - '1. Soundcheck' : 'tutorial/soundcheck.md'
-        - '2. Sequence Generators & Contexts' : 'tutorial/sequence-generators-and-contexts.md'
-        - '3. Sequence Generator Types' : 'tutorial/sequence-generator-types.md'
+        - '2. Making Sounds' : 'tutorial/making-sounds.md'
+        - '3. Organizing Sounds' : 'tutorial/organizing-sounds.md'
         - '4. Modifying the Event Stream' : 'tutorial/modifying-the-event-stream.md'
         - '5. Modifying Generators' : 'tutorial/modifying-sequence-generators.md'
         - '6. Layering Generators' : 'tutorial/multiplying-generators.md'

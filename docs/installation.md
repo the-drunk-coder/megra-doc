@@ -1,6 +1,6 @@
 # Installation
 
-There's three ways to install Mégra. Before starting, make sure you read the chapter about the audio configuration!
+There are three ways to install Mégra. You can download the binary, install it using `Cargo` (Rust's package manager), or compile it from source.
 
 ## Binaries
 
@@ -9,6 +9,14 @@ This is the easiest way if you're interested in using Mégra. As Mégra is a sta
 [Mégra 0.0.6](https://github.com/the-drunk-coder/megra.rs/releases/tag/0.0.6)
 
 On Linux and macOS, you'll probably need to make the file executable by calling `chmod +x <filename>` on the command line.
+
+### How to Pick a Version
+
+As you can see on the download page, for some operating systems, there is a version that has the suffix `_ringbuffer`.
+
+The default, non-ringbuffer version of Mégra only works at a fixed blocksize of 512, so if you want to install that version, make sure you're able to set your system blocksize to 512. 
+
+On Windows, it's necessary to use the ringbuffer version because the WASAPI audio API uses variable buffer sizes. There's no ASIO version currently.
 
 ## With Cargo
 
@@ -53,6 +61,10 @@ cargo run --release -- -o 2ch
 
 If the downloaded version doesn't work, it might be because the release version is compiled against a newer version of glibc. In this case, 
 you can install it from source or use `cargo install`. It's recommended to install Rust following the instructions on `https://rust-lang.org`.
+
+### Windows
+
+If Mégra doesn't start, try starting it from a command prompt. If it says something like "the current stream config isn't supported", try starting it with the option `--live-buffers 2` (or whatever you number of output channels is). Sometimes WASAPI doesn't support different numbers of input- and output channels.
 
 
 

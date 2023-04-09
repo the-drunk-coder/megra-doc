@@ -33,64 +33,39 @@ various executions.
 
 This is the most simple generator, it just repeats the events it is given over and over at a steady time interval. Each generator has a bunch of keyword arguments, as you can see above.
 
-## The Cycle Generator
+## The Loop Generator
 
-We've already seen this above in the introduction of contexts. The cyc generator creates, you've guessed it, cycles, even though there's more to it, as we will see.
+We've already seen this above in the introduction of contexts. The `loop` generator creates, you've guessed it, loop, even though there's more to it, as we will see.
 
 ```lisp
-;; Here's a basic cycle:
+;; Here's a basic loop:
 (sx 'trololo #t ;; <-- there's no need to name every context 'context' ... you don't use 'password' for all your passwords, do you ?
-  (cyc 'bells "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5"))
+  (loop 'bells (risset 'a4) (~) (risset 'a6) (~) (risset 'a4) (~) (risset 'c5) (risset 'e5)))
 ```
 
 ```lisp
 ;; If you want the generator to be faster, you can modify the time interval:
 (sx 'trololo # ;; much faster
-  (cyc 'bells :dur 100 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5"))
+  (loop 'bells :dur 100 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5"))
 
 (sx 'trololo # ;; way slower !
-  (cyc 'bells :dur 400 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5")) 
+  (loop 'bells :dur 400 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5")) 
 ```
 
-The 'cyc' function takes a string as an argument that describes a cycle. If you already know TidalCycles, the concept is borrowed from that. It is a little sequencing language of its own. 
 
-So far everything has been very deterministic, so what's all the stochastic talk in the readme about ?
-Well, take a look at this:
-
-```lisp
-(sx 'trololo #t 
-  (cyc 'bells :rep 70 :max-rep 4 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5")) 
-```
-
-Doesn't sound as predictable, does it ? So what do the keyword arguments do ? The 'rep' keyword defines
-the chance of an event to be repeated (70% chance in this case). The 'max-rep' keyword specifies the 
-maximum number of repetitions.  
-
-For the sake of visualization, let's reduce the number of repetitions:
-
-```lisp
-(sx 'trololo #t 
-  (cyc 'bells :rep 70 :max-rep 2 "risset:'a4 ~ risset:'a6 ~ risset:'a4 ~ risset:'c5 risset:'e5")) 
-```
-
-Now, let's see what this markov chain looks like as a graph:
-
-```lisp
-(export-dot "trololo" :live 'trololo 'bells)
-```
 
 You'll now find a file called "trololo_trololo_bells.dot" in the folder you started Mégra from.
 Run `$ neato -Tsvg trololo_trololo_bells.dot -o trololo_trololo_bells.svg` to render an SVG file that you
 can run in your browser. You should see the markov chain represented as a graph, where you can see all
 the repetitions, etc. Try different settings and see what they look like !
 
-Because of its capacity to create repetetive sequences, the cyc generator is perfect for creating 
+Because of its capacity to create repetetive sequences, the loop generator is perfect for creating 
 beats and so on. 
 For a full description, see the entry in the function reference !
 
 ## The Inference Generator
 
-The cyc generator is good to create more or less repetetive sequences from abstract descriptions (the cyc language),
+The loop generator is good to create more or less repetetive sequences from abstract descriptions,
 But what if you want something more controlled ? If you want to create generators from a set of rules, the 'infer' 
 generator will take them and infer a generator from them. This is also a good opportunity to explain what the markov
 chains (of probabilistic finite automata, PFA for short) are doing.
