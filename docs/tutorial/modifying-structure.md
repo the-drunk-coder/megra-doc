@@ -4,7 +4,7 @@ The sequence generators we have seen so far were relatively simple. Mégra allow
 
 This becomes especially interesting in combination with layering (see chapter "Layering Sound").
 
-# Modifying Structure at Creation Time
+## Modifying Structure at Creation Time
 
 Let's take a look at the loop generator: 
 
@@ -33,14 +33,14 @@ You can also "grow" a generator at creation time. The grow algorithm duplicates 
     (loop 'loopy (bd '909) (hats) (sn 'fat) (hats))))
 ```
 
-# Modifying Structure at Runtime
+## Modifying Structure at Runtime
 
 You can also modify structures, or their execution speed and order, at runtime. Same as for sound, this can be done
 over discrete time steps or probabilistically.
 
 For a full list of modifiers that can be applied, see the "Generator Modifiers" section in the function reference.
 
-## apple - probability-based
+### apple - probability-based
 
 ```lisp
 (sx 'ba #t 
@@ -73,7 +73,7 @@ Let it run for a while and then check what it looks like:
 (export-dot "grown" :live 'ba 'ta)
 ```
 
-## every - step-based
+### every - step-based
 
 The step-based version actually fills both roles:
 
