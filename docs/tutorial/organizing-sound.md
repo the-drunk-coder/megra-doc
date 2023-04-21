@@ -113,6 +113,8 @@ This is so that we can adress them for visualization, and keep their state over 
 (clear)
 ```
 
+![Just a Sine Wave](../diagrams/nucleus.svg)
+
 This is the most simple generator, it just repeats the events it is given over and over at a steady time interval. Each generator has a bunch of keyword arguments, as you can see above.
 
 ### The Loop Generator
