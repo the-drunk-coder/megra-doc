@@ -1,4 +1,6 @@
-# Sounds in Context
+# Organizing Sound
+
+## Putting Sound in Context
 
 To organize sounds, we need to put things into context. Everything in Mégra runs inside a "context" where different sequences (or sequence generators) are synchronized. 
 That's why it's a "Sync-conteXt", or "sx" for short. "Synchronization" here refers to to the generators being started at the same time. 
@@ -81,7 +83,7 @@ that is emitted by the generator has a bunch of tags, which contain the name of 
 generator, the event type, and, in case of sample events, the search tags (more about that later). 
 The block and solo keywords activate filters that act on these tags.
 
-# Some Sequence Generators Types
+## Creating Structures - Some Sequence Generators Types
 
 We've already seen one type of generator, the loop generator. There are several more.
 Each sequence generator is fundamentally a *Markov chain* that behaves in a certain way,
@@ -96,7 +98,7 @@ Let's look at some generators now. For a complete list, see the 'Sequence Genera
 in the 'Function Reference' section below. As already mentioned, each generator needs an identifier.
 This is so that we can adress them for visualization, and keep their state over the various executions.
 
-## The Nucleus Generator
+### The Nucleus Generator
 
 .. or 'nuc', for short ...
 
@@ -113,7 +115,7 @@ This is so that we can adress them for visualization, and keep their state over 
 
 This is the most simple generator, it just repeats the events it is given over and over at a steady time interval. Each generator has a bunch of keyword arguments, as you can see above.
 
-## The Loop Generator
+### The Loop Generator
 
 We've already seen this above in the introduction of contexts. The `loop` generator creates, you've guessed it, loop, even though there's more to it, as we will see.
 
@@ -133,7 +135,7 @@ you can specify the time in milliseconds (the defualt time is 200ms):
 
 For a full description, see the entry in the function reference !
 
-## The Inference Generator
+### The Inference Generator
 
 The loop generator is good to create more or less repetetive sequences from abstract descriptions,
 But what if you want something more controlled ? If you want to create generators from a set of rules, the 'infer' 
@@ -199,7 +201,7 @@ required memory length when necessary, i.e. to define the number of repetitions.
 
 A bit like irregular trap, no ?
 
-## The Learning Generator
+### The Learning Generator
 
 Markov chains cannot only be inferred from rules, but also learned from a sample. Here's where
 a bit of old-fashioned machine learning comes in. 

@@ -1,9 +1,8 @@
-# Modifying the Event Stream
+# Modifying Sounds
 
-Every generator emits a stream of sound events that flow towards the sink (sx). The events can be 
-manipulated along the way, either in a probabilistic or in a step-based fashion.
+Every generator emits a stream of sound events that flow towards the sink (sx). The events can be manipulated along the way, either in a probabilistic or in a step-based fashion. That way, we can **modify** the sounds we make.
 
-You can also filter for certain event types.
+You can also filter for certain event types, so that your modifications can be more fine-grained.
 
 ## pear - probability-based
 

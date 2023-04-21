@@ -91,6 +91,30 @@ a loop can be applied (`rep`, `max-rep` and `rnd`).
 
 ---
 
+## `facts` - Factors for Parameters 
+
+This is great to use together with the `cmp` (compose) function to write shorthands
+
+### Examples 
+
+```lisp
+;; make a melody
+(sx 'foo #t
+(cmp
+	;; the second argument ('freq) is the parameter the factors are applied to
+	(facts 'baz 'freq 1 1.2 0.9 1.3) ;; apply a series of factors to create a melody
+	(nuc 'bar (saw 100))))
+
+;; make complex rhythmms
+(sx 'foo #t
+(cmp
+	;; 'dur is the duration parameter (between event onsets)
+	(facts 'baz 'dur 1.25 0.75 1.5 0.5) ;; apply a series of factors to create a rhythm
+	(loop 'bar (bd) (sn))))
+
+```
+
+---
 
 ## `flower` - Flower Generator
 
@@ -357,3 +381,27 @@ This generator arranges sound events in "stages". See for yourself.
   (stages 'ga :pprev 10 :pnext 10 (saw 100) (saw 200) (saw 300) (saw 400)))
 ```
 ![cyclical stages generator](../diagrams/stages-cyclical.svg)
+
+## `vals` - Explicit Values for Parameters 
+
+This is great to use together with the `cmp` (compose) function to write shorthands
+
+### Examples 
+
+```lisp
+;; make a melody
+(sx 'foo #t
+(cmp
+	;; the second argument ('freq) is the parameter the factors are applied to
+	(vals 'baz 'freq 100 120 90 130) ;; apply a series of values to create a melody
+	(nuc 'bar (saw))))
+
+;; make complex rhythmms
+(sx 'foo #t
+(cmp
+	;; 'dur is the duration parameter (between event onsets)
+	(vals 'baz 'dur 250 150 300 100) ;; apply a series of values to create a rhythm
+	(loop 'bar (bd) (sn))))
+
+```
+---

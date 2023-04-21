@@ -27,6 +27,31 @@ Define a bounded brownian motion on a parameter.
 
 ---
 
+## `bounce` - Parameter Oscillator
+
+Define oscillation on any parameter. The oscillation curve is a bit bouncy, not really sinusoidal.
+
+### Parameters 
+
+* upper limit - upper limit for oscillation 
+* lower limit - lower limit for oscillation 
+* `:cycle` - oscillation cycle length in steps
+
+### Syntax
+
+```lisp
+(bounce <upper limit> <lower limit> :cycle <cycle length in steps>)
+```
+
+### Example
+
+```lisp
+(sx 'simple #t
+  (nuc 'beat (bd) :dur (bounce 200 600 :steps 80)))
+```
+
+---
+
 ## `env` - Discrete Envelope
 
 Define an envelope on any parameter. Length of list of levels must be one more than length of list of durations.
@@ -89,25 +114,23 @@ Fade a parameter (sinusoidal).
 
 ---
 
-## `bounce` - Parameter Oscillator
+## `transpose` or `tpo` - Transpose 
 
-Define oscillation on any parameter. The oscillation curve is a bit bouncy, not really sinusoidal.
+Transpose by a number of half-notes (equal temperament tuning).
 
-### Parameters 
+Works on both frequency and playback rate.
 
-* upper limit - upper limit for oscillation 
-* lower limit - lower limit for oscillation 
-* `:cycle` - oscillation cycle length in steps
-
-### Syntax
+### Examples 
 
 ```lisp
-(bounce <upper limit> <lower limit> :cycle <cycle length in steps>)
-```
-
-### Example
-
-```lisp
-(sx 'simple #t
-  (nuc 'beat (bd) :dur (bounce 200 600 :steps 80)))
+;; transpose up a minor third
+(sx 'ba #t
+	(pear (tpo 3) (nuc 'da (violin 'a3))))
+	
+;; create a chord
+(sx 'ba #t
+	(xspread
+        (pear (tpo 5))
+        (pear (tpo 3))
+		(nuc 'da (violin 'a3))))	
 ```

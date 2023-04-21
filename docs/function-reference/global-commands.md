@@ -120,6 +120,12 @@ Specifies the pool of global resources for the primitive lifemodeling algorithm 
 
 ---
 
+## `import-sample-sets` - Import a Sample Sets
+
+See chapter "Using Samples"
+
+---
+
 ## `latency` - latency between control- and audio threads.
 
 Default is 50ms or 0.05 seconds. Value is passed in seconds.

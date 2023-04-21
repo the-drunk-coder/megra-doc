@@ -89,6 +89,7 @@ Sample events allow you to play a pre-loaded samples, using keywords to specify 
 | `:pft2`   | 'none                  | peak filter 2 type                                                                       |             |
 | `:rev`    | 0.0                    | reverb amount                                                                            | yes         |
 | `:del`    | 0.0                    | delay amount                                                                             | yes         |
+| `:dist`   | 0                      | distortion (simple cubic waveshaping)                                                    |             |
 | `:tags`   | none                   | additional tags                                                                          |             |
 
 
@@ -198,7 +199,8 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | `:del`    | 0.0          | delay amount                                                                             |
 | `:pw`     | 0.5          | pulsewidth (ONLY `sqr`)                                                                  |
 | `:tags`   | none         | additional tags                                                                          |
-
+| `:dist`   | 0            | distortion (simple cubic waveshaping)                                                    |
+	
 ## Risset Event
 
 A simple risset bell event.
