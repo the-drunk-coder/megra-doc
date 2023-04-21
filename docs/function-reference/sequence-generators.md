@@ -2,8 +2,15 @@
 
 ## `cyc` - Cycle Generator
 
-Generates a cycle (aka loop) from a simple sequencing language. You can specify parameters within the sequence language,
-or placeholders. Also, you can specify deviations from the default duration between events within the sequencing language.
+Generates a cycle (aka loop) from a simple sequencing language. 
+
+Note that this is not a cycle in the TidalCycles sense, as it doesn't partition a fixed duration into events,
+but rather creates a loop whose length is dependent on the amount of specified events (still working on the
+terminology here).
+
+You can specify parameters within the sequence language, or placeholders. Also, you can specify deviations 
+from the default duration between events within the sequencing language.
+
 It might seem simple, but this is one of the most powerful generators in Mégra.
 
 #### Parameters
