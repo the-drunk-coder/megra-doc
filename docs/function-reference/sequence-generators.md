@@ -5,6 +5,8 @@
 Generates a fixed-duration cycle. The duration between the events will be determined by the number
 of events, while the overall duration is fixed. 
 
+Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-reference/shorthand-syntax/).
+
 #### Parameters
 
 * name - generator name
@@ -304,6 +306,8 @@ great to write scores, using the linear sequence with control events to score ot
 
 The `loop` generator, unlike `cyc`, creates a loop of events, where the overall duration is dependent
 on the number of events you pass in.
+
+Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-reference/shorthand-syntax/).
 
 ### Example
 
