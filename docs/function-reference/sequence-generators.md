@@ -1,27 +1,18 @@
-# Sequence Generators
+# Sequence Generators (in Alphabetical Order)
 
 ## `cyc` - Cycle Generator
 
-Generates a cycle (aka loop) from a simple sequencing language. 
-
-Note that this is not a cycle in the TidalCycles sense, as it doesn't partition a fixed duration into events,
-but rather creates a loop whose length is dependent on the amount of specified events (still working on the
-terminology here).
-
-You can specify parameters within the sequence language, or placeholders. Also, you can specify deviations 
-from the default duration between events within the sequencing language.
-
-It might seem simple, but this is one of the most powerful generators in Mégra.
+Generates a fixed-duration cycle. The duration between the events will be determined by the number
+of events, while the overall duration is fixed. 
 
 #### Parameters
 
 * name - generator name
 * sequence - sequence description
 * `:dur` - default space between events 
-* `:rep` - probability of repeating an event
+* `:rep` - probability of repeating an event (this might change the cycle duration)
 * `:max-rep` - limits number of repetitions
 * `:rnd` - random connection probability (currently not working the way I expected it ...)
-* `:map` - map events on parameters
 * `:events` - use labeled events
 
 ### Syntax
@@ -31,53 +22,53 @@ It might seem simple, but this is one of the most powerful generators in Mégra.
 ```
 
 ### Example 
+
+The default duration for a cycle is 800ms. Thus, the following example will 
+create an even beat with a time spacing of 200ms between each event:
 ```lisp
 ;; plain
-(sx 'simple #t
-  (cyc 'beat "bd ~ hats ~ sn ~ hats ~"))
+(sx 'simple #t 
+  (cyc 'beat (bd) (hats) (bd) (hats))) 
+```
+
+This one, on the other hand, will result in an event spacing of 266.666667ms (800/3),
+while the overall cycle duration will remain:
+
+```lisp
+;; plain
+(sx 'triplet #t
+  (cyc 'perc (risset 2000) (risset 2000) (risset 2000)))
+```
+
+This can be used to create 3-against-4 rhythms very easily, which also makes the idea clearer:
+
+```lisp
+;; plain
+(sx 'three-against-four #t
+  (cyc 'beat (bd) (hats) (bd) (hats))
+  (cyc 'perc (risset 2000) (risset 2000) (risset 2000)))
 ```
 
 ![A plain beat](../diagrams/cycle-simple.svg) 
 
+In this example, we make use of the reprtitions. Here you can see that Mégra isn't a cycle-language,
+really, as this breaks the cycle length:
+
 ```lisp
 ;; with a 40% chance of repetition, 2 times at max
 (sx 'simple #t
-    (cyc 'beat :rep 40 :max-rep 2 "bd ~ hats ~ sn ~ hats ~"))
+	(cyc 'beat :rep 40 :max-rep 2 (bd) (hats) (bd) (hats)))
 ```
 ![A beat with repetitions](../diagrams/cycle-complex.svg)
 
 
 ```lisp
-;; with labeled events
-(sx 'simple #t	
-	(cyc 'beat 
-	:events 'a (bd) 'b (hats) 'c (sn)
-	"'a ~ 'b ~ 'c ~ 'b ~"))
-```
-
-```lisp
-;; with parameters and placeholder
-(sx 'simple #t	
-	(cyc 'beat 
-	:map 'saw 
-	"200 ~ 120 140 'a3")) ;; you can use frequencies or note names 
-```
-
-```lisp
-;; with escape durations
-(sx 'simple #t
-	(cyc 'beat "bd ~ hats /100 hats /100 ~ sn ~ hats ~"))
-```
-
-```lisp
-;; control cycles with other cycles
+;; control cycles with a loop
 (sx 'control #t
-	(cyc 'ba 
-		:dur 1599 ;; switch just in time ... will run out of sync eventually
-		:events
-		'a (ctrl (sx 'controlled #t (cyc 'fa "bd sn")))
-		'b (ctrl (sx 'controlled #t (cyc 'fa "hats hats")))
-		"'a 'b 'a 'b"
+	(loop 'ba 
+         :dur 1599 ;; switch just in time ... will run out of sync eventually
+		 (ctrl (sx 'controlled #t (cyc 'fa (bd) (sn))))
+		 (ctrl (sx 'controlled #t (cyc 'fa (hats) (hats))))		
 		))
 ```
 
@@ -311,15 +302,24 @@ great to write scores, using the linear sequence with control events to score ot
 
 ## `loop` - Loop Generator
 
-The `cyc` generator is a complex beast, pretty much a tiny language on its own. The loop generator is a 
-very simple generator if you want a plain loop in a lisp-y syntax.
+The `loop` generator, unlike `cyc`, creates a loop of events, where the overall duration is dependent
+on the number of events you pass in.
 
 ### Example
 
 ```lisp
 ;; default durations
+;; assuming the default duration is 200ms, this loop will have an overall duration (or cycle-time) of 800ms
 (sx 'around #t
   (loop 'and-around (saw 100) (saw 200) (saw 300) (saw 400)))
+  
+;; assuming the default duration is 200ms, this loop will have an overall duration (or cycle-time) of 1000ms
+(sx 'around #t
+  (loop 'and-around (saw 100) (saw 200) (saw 300) (saw 400) (saw 500)))
+  
+;; compare with a cycle, on the other hand:
+(sx 'around #t
+  (cyc 'and-around (saw 100) (saw 200) (saw 300) (saw 400) (saw 500)))
   
 ;; custom durations
 (sx 'around #t
