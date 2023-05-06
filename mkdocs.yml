@@ -29,6 +29,7 @@ nav:
         - 'Control Events' : 'function-reference/control-events.md'
         - 'Arithmetic Events' : 'function-reference/arithmetic-events.md'
         - 'Sequence Generators' : 'function-reference/sequence-generators.md'
+        - 'Shorthand Syntax' : 'function-reference/shorthand-syntax.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
         - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
         - 'Discrete Parameter Modifiers' : 'function-reference/discrete-parameter-modifiers.md'
