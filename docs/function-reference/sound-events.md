@@ -52,6 +52,15 @@ Sample events allow you to play a pre-loaded samples, using keywords to specify 
 (bd 'bd808 :lpf 1000 :rate 0.9)
 ```
 
+You can change which samples to pick programatically, i.e. using the `keys` modifier.
+
+```lisp
+(sx 'ba #t
+	(cmp 
+		(loop 'fa (keys '808) (keys '909)) ;; switch back and forth between 808 and 909
+		(nuc 'tra (bd))))
+```
+
 ### Parameters
 
 | Parameter | Default                | Description                                                                              | Modulatable |

@@ -114,6 +114,33 @@ Fade a parameter (sinusoidal).
 
 ---
 
+## `random-sample` or `rands` - Pick a Random Sample Every Time
+
+Pick a random sample every time:
+
+```lisp
+(sx 'ba #t
+  (pear
+	(rands) ;; pick a random bassdrum every time
+	(nuc 'tra (bd))))
+```
+
+---
+
+## `sample-number` or `sno` - Sample Number
+
+Pick a sample by its position in the sample folder.
+
+```lisp
+(sx 'ba #t
+  (cmp
+	(loop 'tro (sno 1) (sno 2) (sno 3)) ;; loop over the first three samples in the folder
+	(nuc 'tra (bd)))
+)
+```
+
+---
+
 ## `transpose` or `tpo` - Transpose 
 
 Transpose by a number of half-notes (equal temperament tuning).
@@ -134,3 +161,4 @@ Works on both frequency and playback rate.
         (pear (tpo 3))
 		(nuc 'da (violin 'a3))))	
 ```
+
