@@ -1,20 +1,46 @@
 # Using MIDI Input
 
-As of version 0.0.6, Mégra has very (very!) rudimentary midi input. It only registers note-on events, and no velocity (or at least as of now there's not much you can do with that).
+As of version 0.0.10, Mégra has better support for MIDI input (no MIDI output so far). 
 
-You can use it to trigger events "by hand" or move step sequencers forward by hand.
+## Checking Available MIDI Ports 
 
-```lisp
+You can check available MIDI ports using the `(list-midi-ports)` function, which will print the MIDI ports to stdout.
 
-(midi-callback 41 (once (saw 100))) ;; define a single-event callback
+## Opening a MIDI Port
 
-(defpart 'ba
-  (xspread
-    (apple :p 20 (haste 2 0.5) (pear (freq-mul 1.5) (sus 20)))
-    (loop 'bu2 (bd) (~) (sn) (~))))
+Use `(open-midi-port <port-num>)` with the port number according to the list.
 
-;; define callback to step part on note 37 
-(midi-callback 37 (step-part 'ba))
+## Defining MIDI Callbacks 
+
+To handle incoming MIDI events, you have to define a callback function:
+
+```
+;; print the received values to stdout 
+;; make sure to use the "midi" identifier like this,
+;; variable names can be chosen freely ...
+(callback "midi" (onoff key vel)
+	(progn
+		(print onoff)
+		(print key)
+		(print vel)
+		))
 ```
 
-You have to activate it using the `--midi-in <port-num>` at startup. You can check available MIDI ports using `--midi-ports`.
+For more complex handling, you can use the `match` function: 
+
+```
+(callback "midi" (onoff key vel)
+	(match onoff
+		144 (once (saw 100)) ;; play a sound for note-on events ..
+		...
+	))
+```
+
+## MIDI Helpers 
+
+There's some functions to help you using incoming MIDI data:
+
+* `mtof` converts a MIDI note to a frequency: `(mtof <midi-note> <concert-pitch>)`
+* `mtosym` converts a MIDI note to a symbol, like `a2` etc ..
+* `veltodyn` converts a MIDI velocity to a dynamic notation symbol such as `'mp` or `fff`
+
