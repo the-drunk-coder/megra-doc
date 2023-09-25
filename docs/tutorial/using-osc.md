@@ -50,3 +50,31 @@ Then, you can define a callback for an OSC address:
 oscsend localhost 9110 /ping iii 1 2 3
 ;; you will see the result on the command line
 ```
+
+## On OSC Types
+
+### Receiving
+
+All numerical types are implicitly converted to 32-bit float, as Mégra currently doesn't really have a concept of numerical types, every number is a float number.
+
+### Sending
+
+As a default, all numbers are sent as float numbers (see above), but if you need to enforce a certain type, there's cast methods that allow you to do so:
+
+```lisp
+(osc-sender 'hi "127.0.0.1:9110")
+
+(osc-send 'hi "/ping" 1.0)
+(osc-send 'hi "/ping" (f64 1.0)) ;; cast to 64-bit float
+(osc-send 'hi "/ping" (i32 1)) ;; cast to 32-bit integer
+(osc-send 'hi "/ping" (i64 1)) ;; cast to 64-bit integer
+
+;; results line by line:
+
+;; ~ % oscdump 9110                          
+
+;; e8bbd50c.a85ed4a1 /ping f 1.000000
+;; e8bbd514.0cc436fc /ping d 1.000000
+;; e8bbd519.f40a7c59 /ping i 1
+;; e8bbd55b.fa374793 /ping h 1
+```
