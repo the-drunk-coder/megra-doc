@@ -258,15 +258,19 @@ Learn a generator from a sample string. Based on the variable-order Markov chain
 proposed in *Ron, Singer, Tishby - The Power of Amnesia (1996)*.
 
 ### Parameters
-* `:events` - Event definitions.
-* `:sample` - Sample string to learn from. Uses the defined event mapping as characters.
+* `:events` - Event definitions. Can be a `map`.
+* `:sample` - Sample string to learn from. Uses the defined event mapping as characters. Can be a `vec`.
 * `:bound` - The maximum order of the learned markov chain, that is, how far to look back when determining the next step.
 * `:epsilon` - Probability threshold, a connection that's less likely than that won't be learned. The higher, the longer it takes to learn.
 * `:size` - Maximum generator size (nodes in the probabilistic finite automaton generated).
 * `:autosilence` - Use `~` as default character for silence.
+* `:tie` - Automatically restart in case this generator gets stuck in an "end state" (a state without children)
 
 ### Example
-Learn a trap-like beat from a sample string.
+
+Learn a trap-like beat from a sample string. When event labels have only one character, the sample string 
+doesn't need spaces.
+
 ```lisp
 (sx 'from #t
   (learn 'data
@@ -278,6 +282,28 @@ Learn a trap-like beat from a sample string.
              hoh"))
 ```
 <img src="../../diagrams/learned-beat.svg" alt="A learned beat." width="1000" height="1000">
+
+You can also use arbitrary labels for events, in which case you need to leave a space between tokens:
+
+```lisp
+(sx 'bat #f
+  (learn 'alo 
+    :events 'cat (saw 100) 'dog (saw 400) 'owl (saw 600)
+    :sample 
+    "cat cat dog owl ~ ~ ~ owl ~ ~ cat cat dog owl ~ ~ ~ owl ~ ~ cat dog owl cat"))
+```
+
+Lastly, you can use `map` and `vec` to assemble your learning data from external sources, such as OSC or MIDI.
+Here's an example for a statical assembly (see documentation on map/vec and OSC to learn how to assemble things from 
+external sources).
+
+```lisp
+(let ork (vec "~" "~" "~" "cat" "bat" "bat" "~" "~" "~" "cat" "bat" "cat"))
+(let dork (map (pair "cat" (saw 300)) (pair "bat" (saw 600))))
+
+(sx 'ba #f
+  (learn 'tro :events dork :sample ork))
+```
 
 ---
 

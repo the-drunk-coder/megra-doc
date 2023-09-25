@@ -39,10 +39,8 @@ To receive OSC messages, first of all you have to open a receiver port:
 
 Then, you can define a callback for an OSC address:
 
-
 ```
-
-(osc-callback "/ping" (a b c) ;; make sure order of argument matches
+(callback "/ping" (a b c) ;; make sure order of argument matches
   (progn 
 	(print a)
 	(print b)
