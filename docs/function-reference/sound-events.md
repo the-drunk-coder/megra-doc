@@ -67,7 +67,7 @@ You can change which samples to pick programatically, i.e. using the `keys` modi
 |-----------|:----------------------:|:----------------------------------------------------------------------------------------:|-------------|
 | `:lvl`    | 0.5                    | envelope max level                                                                       | yes         |
 | `:amp`    | 0.77                   | sampler (oscillator) amplitude                                                           | yes         |
-| `:rate`   | 1.0                    | sample playback rate                                                                     | yes         |
+| `:rate`   | 1.0                    | sample playback rate (negative values for reverse playback)                              | yes         |
 | `:start`  | 0.0                    | start within sample file, ratio                                                          |             |
 | `:atk`    | 1                      | gain envelope attack, in ms                                                              |             |
 | `:dec`    | 1                      | gain envelope decay, in ms (using this turns the envelope into ADSR, otherwise it's ASR) |             |
