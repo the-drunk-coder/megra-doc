@@ -74,4 +74,6 @@ you can install it from source or use `cargo install`. It's recommended to insta
 If Mégra doesn't start, try starting it from a command prompt. If it says something like "the current stream config isn't supported", try starting it with the option `--live-buffers 2` (or whatever you number of output channels is). Sometimes WASAPI doesn't support different numbers of input- and output channels.
 
 
+### MacOS
 
+Mégra will always look for an INPUT device, but some Apple devices don't have that (such as a Mac Mini). In that case Mégra might not start. This shouldn't be much of a problem with laptops, or with external interfaces that have inputs (will be fixed in the future).
