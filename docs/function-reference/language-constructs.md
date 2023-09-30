@@ -5,6 +5,39 @@ help when interfacing with the "outside world" or in other situations. Most a bo
 
 Some of these are not stable yet and might change as demands are refined ...
 
+## Arithmetics
+
+Mégra has some basic arithmetic support ...
+
+### Syntax
+
+* Multiplication: `(mul <arg0> ... <argN>)`
+* Division: `(div <args>)`
+* Addition: `(add <arg0> ... <argN>)`
+* Subtraction: `(sub <args>)`
+* Modulo: `(mod <args>)`
+* Power: `(pow <args>)`
+
+### Examples: 
+
+```lisp
+(add 1 2 3) ;; 6
+(pow 2 2) ;; 4
+```
+
+The arithmetics are (kinda) lazily evaluated, so you can modify global behaviours.
+
+```lisp
+(let tonic 100)
+
+(sx 'ba #t
+	(nuc 'root (saw tonic))
+	(nuc 'fifth (saw (mul tonic 1.5))))
+```
+
+By changing `tonic` you can now change the chord while it's running ...
+
+
 ## `callback` - Define a Callback
 
 Same as `fun`, but for MIDI- and OSC callbacks (see articles about MIDI and OSC to see how to define callbacks).
