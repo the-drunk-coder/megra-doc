@@ -46,13 +46,13 @@ The `:t` argument can also be written with the full word `:time`.
 
 An exponential ramp between two points.
 
-## Parameters
+### Parameters
 
 * start level (positional)
 * end level (positional)
 * `:t` or `:time` - ramp time
 
-## Example
+### Example
 
 Fade frequency of sine oscillator from 100hz to 3000hz over it's 4 second duration. Note 
 the difference between sustain (milliseconds) and ramp time (seconds).
@@ -66,6 +66,18 @@ The `:t` argument can also be written with the full word `:time`.
 ## `env~` - Multi-Point Envelope
 
 Multi-point envelope. Each envelope segment can be specified as linear, exponential or logarithmic.
+
+### Parameters
+
+* `:l` list of levels 
+* `:t` list of times (in seconds, not milliseconds)
+
+### Example
+
+```lisp
+;; ADSR envelope on oscillator amplitude
+(once (sine 300 :amp (env~ :l 0.0 1.0 0.5 0.5 0.0 :t 0.1 0.2 0.4 0.3)))
+```
 
 ## `lfo~` - Sine LFO
 

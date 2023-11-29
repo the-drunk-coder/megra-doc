@@ -17,6 +17,25 @@ associated.
 		(nuc 'bar (violin 'a3 :sus 200))))
 ```
 
+You can use the `:idx` parameter to select a specific type (as of 0.0.11, select the specific oscillator for `mosc` or 
+the peak filter for sample events):
+
+```lisp
+;; only modify frequency of second oscillator
+(sx 'ba #t 
+	(pear (freq-mul 2 :idx 2)
+		(nuc 'fa (mosc :osc1 'saw :osc2 'saw :freq1 100 :freq2 200))))
+```
+
+If no index is specified, the arithmetic event will be applied to all entities that support it:
+
+```lisp
+;; modify frequency of all oscillators
+(sx 'ba #t 
+	(pear (freq-mul 2)
+		(nuc 'fa (mosc :osc1 'saw :osc2 'saw :freq1 100 :freq2 200))))
+```
+
 ## Special Events and Shorthands
 
 ### Keys 

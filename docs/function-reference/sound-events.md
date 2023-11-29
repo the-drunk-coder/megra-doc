@@ -24,6 +24,27 @@ The filter types are:
 * `'peak` - parametric eq band
 * `'none` - no filter
 
+## Oscillator Types
+
+Some events have configurable oscillators (see below).
+
+The oscillator types are:
+
+* `'sine` - sine wave oscillator
+* `'tri` - triangle wave oscillator (LF, non-bandlimited, out of tune)
+* `'sqr` - square wave oscillator (LF, non-bandlimited, out of tune)
+* `'saw` - sawtooth wave oscillator (LF, non-bandlimited, out of tune)
+* `'rsaw` - reverse wave oscillator (LF, non-bandlimited, out of tune)
+* `'wsaw` - wavetable sawtooth oscillator (LF)
+* `'fmsqr` - fm squarewave oscillator (softer)
+* `'fmsaw` - fm sawtooth oscillator (softer)
+* `'fmtri` - fm triangle oscillator (softe)r
+* `'cub` - cubic sine approximation
+* `'white` - white noise
+* `'brown` - brown noise
+* `'wtab` - wavetable oscillator
+* `'wmat` - wavematrix oscillator
+
 ## Envelope Types
 
 Some events have configurable envelope types (see below).
@@ -209,7 +230,47 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | `:pw`     | 0.5          | pulsewidth (ONLY `sqr`)                                                                  |
 | `:tags`   | none         | additional tags                                                                          |
 | `:dist`   | 0            | distortion (simple cubic waveshaping)                                                    |
-	
+
+
+## Multi-Oscillator Event
+
+`mosc` - A synthesizer with up to four configurable oscillators, rest the same as single oscillator event.
+
+**Syntax Example**:
+
+```lisp
+;; a synth with two sawtooth oscillators, spaced an octave apart
+(once (mosc :osc1 'saw :osc2 'saw :freq1 100 :freq2 200))
+```
+
+| Parameter           | Default      | Description                                                                              |
+|---------------------|:------------:|:----------------------------------------------------------------------------------------:|
+| `:osc1` - `osc4`    | NONE         | oscillator 1-4 type                                                                      |
+| `:freq1` - `:freq4` | NONE         | oscillator 1-4 frequency                                                                 |
+| `:lvl`              | 0.5          | overall level                                                                            |
+| `:amp1`- `:amp4`    | 0.6          | oscillator 1-4 amplitude                                                                 |
+| `:atk`              | 1            | gain envelope attack, in ms                                                              |
+| `:dec`              | 1            | gain envelope decay, in ms (using this turns the envelope into ADSR, otherwise it's ASR) |
+| `:rel`              | 100          | gain envelope release, in ms                                                             |
+| `:sus`              | 48           | gain envelope sustain, in ms                                                             |
+| `:atkt`             | attack type  | (see envelope types)                                                                     |
+| `:dect`             | decay type   | (see envelope types)                                                                     |
+| `:relt`             | release type | (see envelope types)                                                                     |
+| `:pos`              | 0.0          | (see above)                                                                              |
+| `:lpf`              | 19000        | lowpass filter frequency                                                                 |
+| `:lpt`              | 'lpf18       | lowpass filter type (see filter types)                                                   |
+| `:lpq`              | 0.4          | lowpass filter q factor                                                                  |
+| `:lpd`              | 0.0          | lowpass filter distortion                                                                |
+| `:hpf`              | 20           | highpas filter frequency                                                                 |
+| `:hpt`              | 'hpf12       | highpass filter type (see filter types)                                                  |
+| `:hpq`              | 0.4          | highpass filter q factor                                                                 |
+| `:rev`              | 0.0          | reverb amount                                                                            |
+| `:del`              | 0.0          | delay amount                                                                             |
+| `:pw1` - `pw4`      | 0.5          | pulsewidth (ONLY `sqr`)                                                                  |
+| `:tags`             | none         | additional tags                                                                          |
+| `:dist`             | 0            | distortion (simple cubic waveshaping)                                                    |
+
+
 ## Risset Event
 
 A simple risset bell event.
