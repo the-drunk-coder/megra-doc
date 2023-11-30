@@ -16,6 +16,20 @@ If you want to modifiy multiple generators, you can collect them in a list.
 
 ---
 
+## `spread` - Takes a List of Complete Generators and Distributes Them
+
+Works similar to `xspread`, but you need to provide the complete generators, no shorthands:
+
+```lisp
+(sx 'ba #t
+  (pear (rev 0.1) 
+    (spread ;; will pan the generators to hard left/hard right.
+      (cyc 'drum "bd ~ sn ~")
+      (cyc 'bass "saw:'a1 ~ ~ ~"))))
+```
+
+---
+
 ## `xdup` - Multiply Generators with Modifiers
 
 If you want to juxtapose (obvious reference here) a generator with a modified copy of itself,

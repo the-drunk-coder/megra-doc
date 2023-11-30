@@ -74,6 +74,27 @@ really, as this breaks the cycle length:
 		))
 ```
 
+### Cycles from Vectors
+
+You can use the `(vec ...)` structure to construct cycles:
+
+```lisp
+(let cycsource (vec (saw 100) (saw 200) (saw 120)))
+
+(sx 'ba #t
+	(cyc 'foo loopsource))
+```
+
+You can use this feature to create more abstract generator functions:
+
+```lisp
+(fun x3 (a)
+	(vec a a a))
+	
+(sx 'ba #t
+	(cyc 'foo (x3 (saw 200))))
+```
+
 ---
 
 ## `chop` - Chop Sample

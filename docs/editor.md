@@ -36,3 +36,9 @@ On the top of the editor, you can find a dropdown menu with your Mégra sketches
 * `Ctrl+F` moves the cursor forward.
 * `Home` moves the cursor to the first open parenthesis of the current line.
 * `End` moves the cursor to the end of the current line.
+
+## Karl-Yerkes-Mode
+
+When started with the flag `--karl-yerkes-mode`, the Mégra editor starts in a special mode inspired by Karl's **Clavm** system. Every keystroke will immediately
+evaluate the current top-level expression the cursor is in. HANDLE WITH CARE! If you change a value from, say `0.2` to something else, and delete the period, you'll have 
+a value of 2 ... on gain values that might be painful!

@@ -17,12 +17,15 @@ Mégra has some basic arithmetic support ...
 * Subtraction: `(sub <args>)`
 * Modulo: `(mod <args>)`
 * Power: `(pow <args>)`
+* Max on n: `(max <args>)` - returns arg with the maximum value
+* Min on n: `(min <args>)` - returns arg with the minimum value
 
 ### Examples: 
 
 ```lisp
 (add 1 2 3) ;; 6
 (pow 2 2) ;; 4
+(max 2 4 6) ;; 6
 ```
 
 The arithmetics are (kinda) lazily evaluated, so you can modify global behaviours.
@@ -82,6 +85,37 @@ The first argument determines the return type (if it's a symbol, then `concat` r
 (print (square 2))
 ```
 ---
+
+You can also use this to create sound events with certain parameters: 
+
+```
+(fun doublesaw (freq)
+	(mosc :osc1 'saw :osc2 'saw :freq1 freq :freq2 (add freq 2)))
+	
+(sx 'foo #t
+	(loop 'bar (doublesaw 100) (doublesaw 110) (doublesaw 90) (~)))
+```
+
+
+Furthermore, you can use this feature to create more abstract generator functions:
+
+```lisp
+(fun x3 (a)
+	(vec a a a))
+	
+(sx 'ba #t
+	(cyc 'foo (x3 (saw 200))))
+```
+
+Or even entire generators: 
+```lisp
+(fun x3 (name a)
+	(cyc name a a a))
+	
+(sx 'ba #t
+    (x3 'boo (saw 200))
+	(x3 'doo (saw 300)))
+```
 
 ## `insert` - Insert Into a Hash Map (also see `map`)
 

@@ -2,7 +2,7 @@
 
 Mégra is a **domain-specific language** for making sound and music. It makes heavy use of Markov chains.
 
-*Latest Version:* [Mégra 0.0.10](https://github.com/the-drunk-coder/megra.rs/releases/tag/0.0.10)
+*Latest Version:* [Mégra 0.0.11](https://github.com/the-drunk-coder/megra.rs/releases/tag/0.0.11)
 
 ## Some Facts
 

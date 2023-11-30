@@ -6,6 +6,8 @@ If no time values for the transition between events is given, 200 milliseconds a
 
 If you specify a tempo modifier with `tmod`, this is changed, of course.
 
+---
+
 ## `clear` - Clear Session
 
 Stops and deletes all present generators.
@@ -26,6 +28,8 @@ Stops and deletes all present generators.
 ## `connect-visualizer`
 
 There's an experimental, browser-based visualizer out there for Mégra, that'll be documented some day. 
+You need some experience with `node` and `npm` (have them installed, etc). 
+You can find the visualizer here: https://github.com/the-drunk-coder/megra-visualizer
 
 ---
 
@@ -134,6 +138,15 @@ If you start Mégra from the command line, and see 'late' messages, you might wa
 
 ---
 
+## `load-file` - import another Mégra file
+
+If you have some functions or instruments defined in a separate file, you can import it with the `load-file` command:
+
+```lisp
+(load-file "/path/to/file.megra3")
+```
+---
+
 ## `once` - Play an Event exactly once.
 
 `(once (sine 300 :sus 200))` plays a sine event with a sustain of 200 ms exactly once. Pretty self-explanatory.
@@ -207,6 +220,11 @@ Short for `SyncconteXt`.
 ```lisp
 (sx 'simple #t
   (nuc 'beat (bd) :dur 400))
+  
+;; stop the context by setting the flag to false:
+
+(sx 'simple #f ;; <- false !
+	(nuc 'beat (bd) :dur 400))
 
 (sx 'simple2 #t :sync 'simple :shift 200
   (nuc 'beat2 (sn) :dur 400))
@@ -222,7 +240,19 @@ Short for `SyncconteXt`.
   (nuc 'snare (sn) :dur 400)
   (nuc 'hats (hats) :dur 400)
   (nuc 'bass (bd) :dur 400))
+  
+;; If your generators go out of sync due to tempo changes or something,
+;; you can explicitly re-sync them: 
+
+(sx 'lol #t :resync #t
+	(nuc 'fu (saw 100))
+	(nuc 'fa (saw 200)))
+
+;; remove the flag once things are in sync!-
 ```
+
+---
+
 ## `stop-rec`
 
 Stop recording, see above ...
