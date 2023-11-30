@@ -4,13 +4,13 @@
 
 A simple linear ramp between two points.
 
-## Parameters
+### Parameters
 
 * start level (positional)
 * end level (positional)
 * `:t` or `:time` - ramp time
 
-## Example
+### Example
 
 Fade frequency of sine oscillator from 100hz to 3000hz over it's 4 second duration. Note 
 the difference between sustain (milliseconds) and ramp time (seconds).
@@ -81,10 +81,31 @@ Multi-point envelope. Each envelope segment can be specified as linear, exponent
 
 ## `lfo~` - Sine LFO
 
+A sinusoidal Lfo.
+
+### Parameters
+
+* `:r` or `:range` - the oscillation range 
+* `:f` or `:freq` - the oscillation frequency (in hz)
+
+### Example
+
+```lisp
+(once (lftri (lfo~ :r 100 1000 :f 1) :sus 3000))
+```
+
 ## `lftri~` - Trinangle LFO
+
+Same as `lfo~`, but with a triangle wave.
 
 ## `lfsqr~` - Squarewave LFO
 
+Same as `lfo~`, but with a square wave.
+
 ## `lfsaw~` - Sawtooth LFO
 
+Same as `lfo~`, but with a sawtooth wave.
+
 ## `lfrsaw~` - Reverse Sawtooth LFO
+
+Same as `lfo~`, but with a reverse sawtooth wave.
