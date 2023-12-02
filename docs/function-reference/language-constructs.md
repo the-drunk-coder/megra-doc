@@ -117,6 +117,14 @@ Or even entire generators:
 	(x3 'doo (saw 300)))
 ```
 
+**ATTENTION** If you want to define a function without parameters, the intuitive way to do this would be just leaving the parenthesis
+empty, but this currently doesn't work. To do so, you have to pass a `#f` flag: 
+
+```lisp
+(fun noparam #f
+	(once (saw 100)))
+```
+
 ## `insert` - Insert Into a Hash Map (also see `map`)
 
 ### Syntax
