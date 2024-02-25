@@ -117,12 +117,41 @@ Or even entire generators:
 	(x3 'doo (saw 300)))
 ```
 
-**ATTENTION** If you want to define a function without parameters, the intuitive way to do this would be just leaving the parenthesis
-empty, but this currently doesn't work. To do so, you have to pass a `#f` flag: 
+If you want to define a function without parameters, the intuitive way to do this would be just leaving the parenthesis
+empty, but in lisp-fashion you can also pass a `#f` flag:
 
 ```lisp
+;; either
+(fun noparam ()
+	(once (saw 100)))
+
+;; or
 (fun noparam #f
 	(once (saw 100)))
+```
+
+You can use the `@rest` and `@all` placeholders if you want to pass on arguments to another function: 
+
+```lisp
+;; pass on all arguments from 'foo' to 'saw'
+(fun foo () (once (saw @all)))
+
+;; arguments are passed on
+(foo 300 :rev 0.2)
+
+;; a chord function for 'cyc' and 'loop'
+(fun chord ()
+	(vec (vec @all))) ;; pass on all args
+
+(sx 'baa #t
+	(loop 'fa (chord (saw 100) (saw 350))))
+	
+;; pass on rest, freq is a mandatory positional arg
+(fun bar (freq)
+  (once (saw freq @rest)))
+
+(bar 300) ;; frequency is mandatory
+(bar 400 :rev 0.2) ;; the rest is optional
 ```
 
 ## `insert` - Insert Into a Hash Map (also see `map`)
