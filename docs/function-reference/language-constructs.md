@@ -220,7 +220,9 @@ A vague mashup of Common Lisp's `cond` and Rust's `match` ... not sure where it'
 
 ### Example
 
-```
+Match the incoming argument precisely:
+
+```lisp
 (fun decide (a)
   (match a
     0 (print "ping")
@@ -229,6 +231,44 @@ A vague mashup of Common Lisp's `cond` and Rust's `match` ... not sure where it'
 (decide 1)
 ;; (decide 0)
 ```
+
+You can also specify conditions (all branches that match will be executed):
+
+```lisp
+(fun decide (a)
+	(match a
+		(> 10) (print "ping") ;; larger than 10
+		(< 12) (print "pong") ;; smaller than 12
+		))
+		
+(decide 13) ;; pin
+;; (decide 11)
+;; (decide 9)
+```
+
+Available conditions: 
+
+* `(< x)` lesser x
+* `(<= x)` lesser or equal x
+* `(> x)` greater x 
+* `(>= x)` greater or equal x
+* `(istype x)` argument is of type x 
+  * use `'num` to match numerical types
+  * use `'str` to match string type
+  * use `'vec` to match vector type
+  * use `'sym` to match symbol type
+  * use `'map` to match map type
+
+```lisp
+(fun va (x)
+	(match x
+		(istype 'str) (once (sine 600))))
+		
+(va 10) ;; nothing
+(va "10") ;; beep
+```
+
+There's currently no default or fallback condition that is executed if no other matches.
 
 ---
 
