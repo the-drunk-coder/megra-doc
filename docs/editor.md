@@ -17,7 +17,7 @@ Using the `--font` argument at startup you can specify one of the two included f
 
 Font size is configured using the `--font-size` argument.
 
-Currently, font and font size can't be changed at runtime.
+`Ctrl+=`/`Ctrl+-` increases/decreases font size at runtime.
 
 ## The Sketchbook
 
@@ -36,6 +36,8 @@ On the top of the editor, you can find a dropdown menu with your Mégra sketches
 * `Ctrl+F` moves the cursor forward.
 * `Home` moves the cursor to the first open parenthesis of the current line.
 * `End` moves the cursor to the end of the current line.
+* `Alt+Up/Down` moves cursor to the previous/next s-expression.
+* `Ctrl+S` selects the current s-expression.
 
 ## Karl-Yerkes-Mode
 
