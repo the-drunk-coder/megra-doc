@@ -271,6 +271,68 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | `:dist`             | 0            | distortion (simple cubic waveshaping)                                                    |
 
 
+## KarPlusPlus
+
+A Karplus-Strong approximation.
+
+**Syntax**: 
+```lisp 
+(kpp <pitch> <keyword parameters>)
+```
+### Parameters 
+
+| Parameter | Default             | Description                                                                              |
+|-----------|:-------------------:|:----------------------------------------------------------------------------------------:|
+| `:osct`   | NONE                | source (burst) oscillator type                                                           |
+| `:ft`     | 'lpf18              | main filter type                                                                         |
+| `:freq1`  | NONE                | source (burst )oscillator frequency                                                      |
+| `:amp`    | 1.0                 | pre-waveshaper gain                                                                      |
+| `:lvl`    | 0.5                 | overall level                                                                            |
+| `:amp1`   | 0.6                 | source (burst) oscillator amplitude                                                      |
+| `:delft`  | DUMMY               | dampening filter type for delay                                                          |
+| `:delfb`  | DUMMY               | feedback for delay                                                                       |
+| `:deldf`  | (depends on filter) | delay dampening frequency                                                                |
+| `:atk`    | 1                   | gain envelope attack, in ms                                                              |
+| `:dec`    | 1                   | gain envelope decay, in ms (using this turns the envelope into ADSR, otherwise it's ASR) |
+| `:rel`    | 100                 | gain envelope release, in ms                                                             |
+| `:sus`    | 48                  | gain envelope sustain, in ms                                                             |
+| `:atkt`   | attack type         | (see envelope types)                                                                     |
+| `:dect`   | decay type          | (see envelope types)                                                                     |
+| `:relt`   | release type        | (see envelope types)                                                                     |
+| `:pos`    | 0.0                 | stereo position                                                                          |
+| `:pw1`    | 0.5                 | source (burst) pulsewidth (ONLY `sqr`)                                                   |
+| `:tags`   | none                | additional tags                                                                          |
+| `:dist`   | 0                   | distortion (simple cubic waveshaping)                                                    |
+| `:rev`    | 0.0                 | reverb amount                                                                            |
+| `:del`    | 0.0                 | delay amount                                                                             |
+	
+** Filter Parameters**
+
+Depend on configured filter, i.e. if it's a lowpass:
+
+| Parameter | Default | Description               |
+|-----------|:-------:|:-------------------------:|
+| `:lpf`    | 19000   | lowpass filter frequency  |
+| `:lpq`    | 0.4     | lowpass filter q factor   |
+| `:lpd`    | 0.0     | lowpass filter distortion |
+
+Or a highpass:
+
+| Parameter | Default | Description              |
+|-----------|:-------:|:------------------------:|
+| `:hpf`    | 20      | highpas filter frequency |
+| `:hpq`    | 0.4     | highpass filter q factor |
+
+
+Or a peak filter:
+
+| Parameter | Default | Description           |
+|-----------|:-------:|:---------------------:|
+| `:pff`    | 1000    | peak filter frequency |
+| `:pfq`    | 10      | peak filter  q factor |
+| `:pfg`    | 0.0     | peak filter  gain     |
+
+
 ## Risset Event
 
 A simple risset bell event.
