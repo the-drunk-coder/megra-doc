@@ -306,7 +306,7 @@ A Karplus-Strong approximation.
 | `:rev`    | 0.0                 | reverb amount                                                                            |
 | `:del`    | 0.0                 | delay amount                                                                             |
 	
-** Filter Parameters**
+**Filter Parameters**
 
 Depend on configured filter, i.e. if it's a lowpass:
 
