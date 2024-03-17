@@ -6,7 +6,7 @@ There are three ways to install Mégra. You can download the binary, install it 
 
 This is the easiest way if you're interested in using Mégra. As Mégra is a standalone, self-contained program, there's not much more setup to be done. Just download the latest version from the [release page](https://github.com/the-drunk-coder/megra.rs/releases/).
 
-LATEST RELEASE: [Mégra 0.0.10](https://github.com/the-drunk-coder/megra.rs/releases/tag/0.0.10)
+LATEST RELEASE: [Mégra 0.0.12](https://github.com/the-drunk-coder/megra.rs/releases/tag/v0.0.12)
 
 On Linux and macOS, you'll probably need to make the file executable by calling `chmod +x <filename>` on the command line.
 
