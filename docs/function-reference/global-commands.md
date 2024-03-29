@@ -31,6 +31,11 @@ There's an experimental, browser-based visualizer out there for Mégra, that'll 
 You need some experience with `node` and `npm` (have them installed, etc). 
 You can find the visualizer here: https://github.com/the-drunk-coder/megra-visualizer
 
+As a parameter, you can pass `:exclude` followed by a list of tags to exclude certain 
+generators from visualization: 
+
+`(connect-visualizer :exclude 'foo 'bar) ;; exclude all generators whose tags contain 'foo or 'bar`
+
 ---
 
 ## `defpart`
