@@ -26,7 +26,14 @@ If you already use `rust` and `cargo` (on any system), you can install the lates
 
 Due to some Rust features that are not fully finished, you need to compile against the `nightly` version of Rust.
 
-In a terminal, type:
+Also on Linux, you'll need to install some dependencies, depending on your distribution:
+
+* `jack2` or `pipewire-jack`, depending on what you use as a sound server.
+* `libjack-dev` (Debian-based) 
+* `libasound2-dev` (Debian-based) or `alsa-lib` (Arch-based)
+
+
+The, in a terminal, type:
 ```
 rustup default nightly
 ```
