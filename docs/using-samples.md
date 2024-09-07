@@ -50,6 +50,12 @@ The filenames are separated into keywords by whitespace, dash, underscore and do
 
 If you don't provide any keyword, a random sample from the folder is chosen. Samples outside of the abovementioned samples folder can't be called.
 
+### Exclude Samples
+
+If your sample set is large, and you don't want to use all the sample folders in your collection, you can put a file named `exclude.txt` in the sample collection folder. 
+
+In that file, you can specify sample folders to be excluded (one folder per line). I.e., if you don't want to load bassdrum samples, put a line `bd` in `exclude.txt`. You can comment out excluded folder (thus include them) by commenting them out with the `#` character.
+
 ### Custom Sample Folder 
 
 As of version 0.0.6, you can provide a **custom sample folder** at startup using the `--sample-folder <path-to-folder>` flag.

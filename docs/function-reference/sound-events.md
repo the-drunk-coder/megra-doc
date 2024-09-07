@@ -144,8 +144,10 @@ about feedback if you have an open mic !
   (nuc 'fa (feedr 1 :start (bounce 0.01 0.99))))
 ```
 
-### `freeze` - freeze the live buffer
-This event writes the current contents of a live buffer (as-is) to a persistent buffer specified by a number, like `(freeze 1)`, which writes the default input buffer (the first one) to a persistent buffer. 
+### `freeze` and `freeze-add` - freeze the live buffer
+This event writes the current contents of a live buffer (as-is) to a persistent buffer specified by a number, like `(freeze 1)`, which writes the default input buffer (the first one) to a persistent buffer. You can omit the number if you want to use the default buffer, just write `(freeze)`.
+
+If you want to add the contents of a live buffer to a persistent buffer, you can use `(freeze-add)`.
 
 If you're using multiple input buffers, you can specify the source like `(freeze 1 :in 2)`, which writes the contents of buffer 2 to freeze buffer 1.
 
@@ -157,6 +159,12 @@ If you use this in a `ctrl` event, you can periodically update the content of th
 ;; freeze once, to buffer 1
 (freeze 1)
 
+;; freeze once, to buffer 1 (that's the default buffer, if you want to use it you can omit the number)
+(freeze)
+
+;; add more sound material to the incoming buffer
+(freeze-add)
+
 ;; freeze periodically, every 6 seconds
 (sx 'ba #t 
   (nuc 'ta :dur 6000 (ctrl (freeze 1))))
@@ -164,7 +172,7 @@ If you use this in a `ctrl` event, you can periodically update the content of th
 
 ### `freezr` - read from frozen buffers
 This allows you to read from the buffer previously frozen with `freeze`. You can use it like any regular sample.
-First argument specifies the buffer to be read from: `(freezr <bufnum>)`
+First argument specifies the buffer to be read from: `(freezr <bufnum>)`. The number can be omitted to choose the default buffer.
 
 ```lisp
 (sx 'ba #t ;; granular sampling on freeze buffer 1 ...
@@ -202,6 +210,8 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | fmsaw | an FM approximation of a sawtooth wave                              |
 | white | white noise                                                         |
 | brown | brown noise                                                         |
+| blit  | naive blit                                                          |
+
 
 ### Parameters
 
@@ -230,6 +240,10 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | `:pw`     | 0.5          | pulsewidth (ONLY `sqr`)                                                                  |
 | `:tags`   | none         | additional tags                                                                          |
 | `:dist`   | 0            | distortion (simple cubic waveshaping)                                                    |
+| `:bcbits` | 24           | bitcrusher bitrate                                                                       |
+| `:bcdown` | 0            | bitcrusher downsampling factor                                                           |
+| `:bcmode` | ???          | bitcrusher mode (floor, ceil, round)                                                     |
+| `:bcmix`  | 0.0          | bitcrusher mix                                                                           |
 
 
 ## Multi-Oscillator Event
@@ -269,7 +283,10 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | `:pw1` - `pw4`      | 0.5          | pulsewidth (ONLY `sqr`)                                                                  |
 | `:tags`             | none         | additional tags                                                                          |
 | `:dist`             | 0            | distortion (simple cubic waveshaping)                                                    |
-
+| `:bcbits`           | 24           | bitcrusher bitrate                                                                       |
+| `:bcdown`           | 0            | bitcrusher downsampling factor                                                           |
+| `:bcmode`           | ???          | bitcrusher mode (floor, ceil, round)                                                     |
+| `:bcmix`            | 0.0          | bitcrusher mix                                                                           |
 
 ## KarPlusPlus
 

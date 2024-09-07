@@ -36,6 +36,7 @@ You can also transfer the current contents of the live input buffer to a persist
 
 ```lisp
 ;; copy from first input buffer to first freeze buffer
+;; if you omit the number, the first one will be chosen
 (freeze 1)
 
 ;; if you have multiple input buffers, you can define the source with the :in argument
@@ -46,4 +47,21 @@ You can also transfer the current contents of the live input buffer to a persist
 ;; read from first freeze buffer
 (sx 'ba #t
 	(nuc 'fa (freezr 1 :sus 200 :atk 100 :rel 100)))
+```
+
+If you want to add material to a running buffer, instead of overwriting it, use the `freeze-add` function:
+
+```lisp
+;; copy from first input buffer to first freeze buffer
+(freeze)
+
+;; add material to the first freeze buffer
+(freeze-add) 
+
+;; you can update the contents while the generator is running !
+
+;; read from first freeze buffer
+;; (no number given, so first buffer is default)
+(sx 'ba #t
+	(nuc 'fa (freezr :sus 200 :atk 100 :rel 100)))
 ```

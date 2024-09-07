@@ -27,7 +27,8 @@ Stops and deletes all present generators.
 
 ## `connect-visualizer`
 
-There's an experimental, browser-based visualizer out there for Mégra, that'll be documented some day. 
+There's an experimental, browser-based visualizer out there for Mégra, that'll be properly documented some day. 
+
 You need some experience with `node` and `npm` (have them installed, etc). 
 You can find the visualizer here: https://github.com/the-drunk-coder/megra-visualizer
 
