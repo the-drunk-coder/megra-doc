@@ -408,6 +408,16 @@ Generates a one-node repeating generator, i.e. as a starting point for growing.
 ```
 ![Just a Bassdrum](../diagrams/nucleus.svg)
 
+You can also pass a `vec` of events: 
+
+```lisp
+
+(let evs (vec (saw 100) (saw 200)))
+
+(sx 'ba #t
+  (nuc 'ta evs))
+```
+
 ---
 
 ## `stages` - Stages Generator
