@@ -92,7 +92,8 @@ You can extract certain event parameters, i.e. to send them over OSC.
 )
 ```
 
-The line between function and macro is very vague in Mégra, i.e. you can do `(fun (name) (fun (concat "to-" name) () (send-to name)))` and it'll work.
+The line between function and macro is very vague in Mégra, i.e. you can do `(fun (name) (fun (concat "to-" name) () (send-to name)))`,
+where in the child function definition `name` will be replaced.
 
 ### Example
 
