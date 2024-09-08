@@ -19,6 +19,9 @@ Mégra has some basic arithmetic support ...
 * Power: `(pow <args>)`
 * Max on n: `(max <args>)` - returns arg with the maximum value
 * Min on n: `(min <args>)` - returns arg with the minimum value
+* Round: `(round n)` (non-lazy)
+* Floor: `(floor n)` (non-lazy)
+* Ceil: `(ceil n)` (non-lazy)
 
 ### Examples: 
 
@@ -63,6 +66,19 @@ The first argument determines the return type (if it's a symbol, then `concat` r
 (concat 'foo "bar" 'baz) ;; returns symbol
 (concat "foo" "bar" 'baz) ;; returns string
 ```
+---
+
+## `ev-param`, `ev-tag` and `ev-name` - Access Event Properties
+
+You can extract certain event parameters, i.e. to send them over OSC.
+
+### Example
+
+```
+(ev-param :dur (saw 100)) ;; extract duraion
+(ev-name (saw 100)) ;; extract event name
+(ev-tag 0 (saw 100)) ;; extract first tag 
+```
 
 ---
 
@@ -75,6 +91,8 @@ The first argument determines the return type (if it's a symbol, then `concat` r
 	<function-body>
 )
 ```
+
+The line between function and macro is very vague in Mégra, i.e. you can do `(fun (name) (fun (concat "to-" name) () (send-to name)))` and it'll work.
 
 ### Example
 
@@ -215,6 +233,38 @@ Note that `name` can be a symbol or just a random identifier ..
 
 ---
 
+## `mapper` - Map Events to Other Events (Unstable!)
+
+The `mapper` function can be used to map events to whatever, i.e. take a note event and turn it into an OSC control event.
+
+### Example:
+
+```lisp
+(fun to-piano (event)
+    ;; send note converts to ctrl event 
+    (ctrl 
+      (osc-send 'osc-client "/control/me"
+         (ev-param :note event)
+         (to-string  (ev-param :dur event)))))
+		 
+(sx 'ba #t
+  (cmp
+	(mapper to-piano)
+	(nuc 'tra (note 44 4)) ;; midi note 44, quarter
+  ))
+	  
+```
+
+To access certain parameters of an event, there's `ev-param`, `ev-tag` and `ev-name`:
+
+```
+(ev-param :dur (saw 100)) ;; extract duraion
+(ev-name (saw 100)) ;; extract event name
+(ev-tag 0 (saw 100)) ;; extract first tag 
+```
+
+---
+
 ## `match` - Conditional Branching (Unstable!)
 A vague mashup of Common Lisp's `cond` and Rust's `match` ... not sure where it's going, yet ...
 
@@ -334,6 +384,10 @@ Vector must exist!
 ```
 
 ---
+
+## `to-string` - Turn Stuff into Strings
+
+This is helpful if you want to send something as a string argument over OSC.
 
 ## `vec` - Define a Vector
 
