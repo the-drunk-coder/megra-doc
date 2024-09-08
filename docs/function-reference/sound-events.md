@@ -242,9 +242,9 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | `:dist`   | 0            | distortion (simple cubic waveshaping)                                                    |
 | `:bcbits` | 24           | bitcrusher bitrate                                                                       |
 | `:bcdown` | 0            | bitcrusher downsampling factor                                                           |
-| `:bcmode` | ???          | bitcrusher mode (floor, ceil, round)                                                     |
+| `:bcmode` | 'cast        | bitcrusher mode (how to quantize) ('cast, 'floor, 'ceil, 'round)                         |
 | `:bcmix`  | 0.0          | bitcrusher mix                                                                           |
-
+| `:nharm`  | 5            | number of harmonics (only for `blit`)                                                    |
 
 ## Multi-Oscillator Event
 
@@ -285,8 +285,9 @@ These are some very naive implementations of non-bandlimited waveforms (except f
 | `:dist`             | 0            | distortion (simple cubic waveshaping)                                                    |
 | `:bcbits`           | 24           | bitcrusher bitrate                                                                       |
 | `:bcdown`           | 0            | bitcrusher downsampling factor                                                           |
-| `:bcmode`           | ???          | bitcrusher mode (floor, ceil, round)                                                     |
+| `:bcmode`           | 'cast        | bitcrusher mode (how to quantize) ('cast, 'floor, 'ceil, 'round)                         |
 | `:bcmix`            | 0.0          | bitcrusher mix                                                                           |
+| `:nharm`            | 5            | number of harmonics (only for `blit`)                                                    |
 
 ## KarPlusPlus
 
@@ -300,9 +301,9 @@ A Karplus-Strong approximation.
 
 | Parameter | Default             | Description                                                                              |
 |-----------|:-------------------:|:----------------------------------------------------------------------------------------:|
-| `:osct`   | NONE                | source (burst) oscillator type                                                           |
+| `:osct`   | NONE                | source (burst) oscillator type, can be any oscillator type, see above                    |
 | `:ft`     | 'lpf18              | main filter type                                                                         |
-| `:freq1`  | NONE                | source (burst )oscillator frequency                                                      |
+| `:freq1`  | NONE                | source (burst) oscillator frequency                                                      |
 | `:amp`    | 1.0                 | pre-waveshaper gain                                                                      |
 | `:lvl`    | 0.5                 | overall level                                                                            |
 | `:amp1`   | 0.6                 | source (burst) oscillator amplitude                                                      |
@@ -322,7 +323,12 @@ A Karplus-Strong approximation.
 | `:dist`   | 0                   | distortion (simple cubic waveshaping)                                                    |
 | `:rev`    | 0.0                 | reverb amount                                                                            |
 | `:del`    | 0.0                 | delay amount                                                                             |
-	
+| `:bcbits` | 24                  | bitcrusher bitrate                                                                       |
+| `:bcdown` | 0                   | bitcrusher downsampling factor                                                           |
+| `:bcmode` | 'cast               | bitcrusher mode (how to quantize) ('cast, 'floor, 'ceil, 'round)                         |
+| `:bcmix`  | 0.0                 | bitcrusher mix                                                                           |
+| `:nharm`  | 5                   | number of harmonics (only for `blit`)                                                    |
+
 **Filter Parameters**
 
 Depend on configured filter, i.e. if it's a lowpass:
