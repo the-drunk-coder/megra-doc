@@ -77,6 +77,38 @@ Inhibit event type, that is, mute event of that type, with a certain probability
 
 ---
 
+## `mapper` - Map Events to Other Events
+
+The `mapper` function can be used to map events to whatever, i.e. take a note event and turn it into an OSC control event.
+
+### Example:
+
+```lisp
+(fun to-piano (event)
+    ;; send note converts to ctrl event 
+    (ctrl 
+      (osc-send 'osc-client "/control/me"
+         (ev-param :note event)
+         (to-string  (ev-param :dur event)))))
+		 
+(sx 'ba #t
+  (cmp
+	(mapper to-piano)
+	(nuc 'tra (note 44 4)) ;; midi note 44, quarter
+  ))
+	  
+```
+
+To access certain parameters of an event, there's `ev-param`, `ev-tag` and `ev-name`:
+
+```
+(ev-param :dur (saw 100)) ;; extract duraion
+(ev-name (saw 100)) ;; extract event name
+(ev-tag 0 (saw 100)) ;; extract first tag 
+```
+
+---
+
 ## `pear` - Probability-Based
 
 Appl-ys and Pears (don't ask me why it's named like this, I like good pears and found it funny).

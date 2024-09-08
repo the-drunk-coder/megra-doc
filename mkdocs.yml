@@ -36,6 +36,7 @@ nav:
         - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
         - 'Global Commands' : 'function-reference/global-commands.md'
         - 'Language Constructs' : 'function-reference/language-constructs.md'
+        - 'Note Event' : 'function-reference/note-event.md'
         - 'Sequence Generators' : 'function-reference/sequence-generators.md'
         - 'Shorthand Syntax' : 'function-reference/shorthand-syntax.md'
         - 'Sound Events' : 'function-reference/sound-events.md'

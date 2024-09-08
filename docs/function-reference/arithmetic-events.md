@@ -49,6 +49,25 @@ Specify lookup keys for samples, works with `add` and `sub`.
 	(nuc 'tra (piano 'a3))))
 ```
 
+---
+
+### MIDI Notes
+
+
+The functions `midi-mul`, `midi-add`, `midi-sub` and `midi-div` allow you to work
+with midi notes (from `note` event) the same way you'd work with frequencies in Mégra: 
+
+```lisp
+(sx 'ba #t
+  (cmp
+	(mapper to-piano)
+	(pear :p 12 (midi-add 2) :p 12 (midi-sub 3))
+	(nuc 'tra (note 44 4)) ;; midi note 44, quarter
+  ))
+```
+
+---
+
 ### `random-sample` or `rands` - Pick a Random Sample Every Time
 
 Pick a random sample every time:
