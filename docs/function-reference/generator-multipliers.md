@@ -1,4 +1,4 @@
-# Generator Multiplyers
+# Generator Multipliers
 
 ## `ls` - Create Generator List
 

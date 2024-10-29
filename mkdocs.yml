@@ -33,7 +33,7 @@ nav:
         - 'Control Events' : 'function-reference/control-events.md'
         - 'Discrete Parameter Modifiers' : 'function-reference/discrete-parameter-modifiers.md'
         - 'Generator Modifiers' : 'function-reference/generator-modifiers.md'
-        - 'Generator Multiplyers' : 'function-reference/generator-multiplyers.md'
+        - 'Generator Multipliers' : 'function-reference/generator-multipliers.md'
         - 'Global Commands' : 'function-reference/global-commands.md'
         - 'Language Constructs' : 'function-reference/language-constructs.md'
         - 'Note Event' : 'function-reference/note-event.md'
