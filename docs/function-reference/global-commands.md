@@ -12,6 +12,8 @@ If you specify a tempo modifier with `tmod`, this is changed, of course.
 
 Stops and deletes all present generators.
 
+This does NOT clear live- and freeze buffers!
+
 ### Examples
 
 ```lisp
@@ -23,6 +25,38 @@ Stops and deletes all present generators.
 
 (clear) ;; clear everything
 ```
+--- 
+
+## `clearallfreeze` - Clear All Freeze Buffers
+
+`(clearallfreeze)` will clear all freeze buffers.
+
+--- 
+
+## `clearalllive` - Clear All Live Buffers
+
+`(clearalllive)` will clear all live buffers.
+
+--- 
+
+## `clearbufs` - Clear Live and Freeze Buffers
+
+`(clearbufs)` will clear live & freeze buffers (sample buffers won't be modified).
+
+--- 
+
+## `clearfreeze` - Clear Specific Freeze Buffer
+
+`(clearfreeze N)` will clear freeze buffer `N`, where `N` is the buffer number. Argument is optional, first freeze buffer 
+will be cleared if not specified.
+
+--- 
+
+## `clearlive` - Clear Specific Live Buffer
+
+`(clearfreeze N)` will clear live buffer `N`, where `N` is the buffer number. Argument is optional, first live buffer 
+will be cleared if not specified.
+
 ---
 
 ## `connect-visualizer`
