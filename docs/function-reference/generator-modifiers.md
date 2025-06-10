@@ -319,6 +319,9 @@ be different from the previous one, obviously.
      ;; this is the "original" 
 	 (cyc 'one "tri:120 tri:90 tri:100 tri:80 ~ ~ tri:120 tri:90 tri:100 tri:80 ~")))
 ```
+---
+
+## `shift` - time-shift individual generator forwards or backwards
 
 ---
 

@@ -3,6 +3,8 @@
 With Mégra, you can use live input more or less like a sample. A buffer is recorded continously and can be used
 like a regular sample. It's not perfect yet and sometimes there are glitches, but it's a lot of fun.
 
+## Using a Live Input Buffer Directly - `feedr`
+
 Using the `feedr` event, you can read directly from the incoming buffer. The buffer is continously overwritten,
 which sometimes leads to glitches. Basically it's a delay line.
 
@@ -31,6 +33,8 @@ You can choose a live input buffer if you have multiple live inputs (specified a
 (sx 'ba #t
 	(nuc 'fa (feedr 2 :sus 200 :atk 100 :rel 100)))
 ```
+
+## Freezing the Live Buffer - `freeze` and `freezr`
 
 You can also transfer the current contents of the live input buffer to a persistent buffer. The `freeze` command does that for you.
 

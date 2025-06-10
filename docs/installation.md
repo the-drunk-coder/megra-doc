@@ -6,23 +6,19 @@ There are three ways to install Mégra. You can download the binary, install it 
 
 This is the easiest way if you're interested in using Mégra. As Mégra is a standalone, self-contained program, there's not much more setup to be done. Just download the latest version from the [release page](https://github.com/the-drunk-coder/megra.rs/releases/).
 
-LATEST RELEASE: [Mégra 0.0.13](https://github.com/the-drunk-coder/megra.rs/releases/tag/v0.0.13)
+LATEST RELEASE: [Mégra 0.0.14](https://github.com/the-drunk-coder/megra.rs/releases/tag/v0.0.14)
 
 On Linux and macOS, you'll probably need to make the file executable by calling `chmod +x <filename>` on the command line.
 
-### How to Pick a Version
+**NOTE:** The pre-build versions don't need you to configure your system's audio buffer size, at the cost of a slightly higher latency. For low-latency versions, see the "With Cargo" install method.
 
-As you can see on the download page, for some operating systems, there is a version that has the suffix `_ringbuffer`.
-
-The default, non-ringbuffer version of Mégra only works at a fixed blocksize of 512, so if you want to install that version, make sure you're able to set your system blocksize to 512. 
-
-On Windows, it's necessary to use the ringbuffer version because the WASAPI audio API uses variable buffer sizes. There's no ASIO version currently.
+There's no ASIO version currently for Windows.
 
 ## With Cargo
 
-On Linux, I recommend this method ... install `cargo` from your distro's package manager, then install Mégra with `cargo`.
+On Linux, I recommend this method ... install `rust` and `cargo` using the instructions found on [https://rust-lang.org](https://rust-lang.org) if you don't already have them.
 
-If you already use `rust` and `cargo` (on any system), you can install the latest relase from crates.io.
+Then, you can install the latest relase from crates.io.
 
 Due to some Rust features that are not fully finished, you need to compile against the `nightly` version of Rust.
 
