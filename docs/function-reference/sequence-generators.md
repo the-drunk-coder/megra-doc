@@ -12,15 +12,15 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 * name - generator name
 * sequence - sequence description
 * `:time` - the overall time of the cycle in milliseconds. The default is 800ms. Duration between events within the cycle will be `time/number of events`.
-* `:rep` - probability of repeating an event (this might change the cycle duration)
-* `:max-rep` - limits number of repetitions
-* `:rnd` - random connection probability (currently not working the way I expected it ...)
-* `:events` - use labeled events
+* ~~`:rep` - probability of repeating an event (this might change the cycle duration)~~
+* ~~`:max-rep` - limits number of repetitions~~
+* ~~`:rnd` - random connection probability (currently not working the way I expected it ...)~~
+* ~~`:events` - use labeled events~~
 
 ### Syntax
 
 ```lisp
-(cyc <name> :dur <duration> :rep <repetition probability> :max-rep <max number of repetitions> :rnd <random connection prob> <sequence>)
+(cyc <name> :dur <duration> <event sequence>)
 ```
 
 ### Example 
