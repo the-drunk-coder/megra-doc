@@ -42,3 +42,5 @@ nav:
         - 'Sound Events' : 'function-reference/sound-events.md'
 theme:
     name: readthedocs    
+markdown_extensions:
+    - attr_list	
