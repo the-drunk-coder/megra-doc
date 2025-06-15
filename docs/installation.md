@@ -16,7 +16,7 @@ There's no ASIO version currently for Windows.
 
 ## With Cargo
 
-On Linux, I recommend this method ... install `rust` and `cargo` using the instructions found on [https://rust-lang.org](https://rust-lang.org) if you don't already have them.
+On Linux, I recommend this method ... install `rust` and `cargo` using the instructions found on <a href="https://rust-lang.org" target="_blank">https://rust-lang.org</a> if you don't already have them.
 
 Then, you can install the latest relase from crates.io.
 
