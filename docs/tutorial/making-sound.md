@@ -29,10 +29,11 @@ Parameters can be set using keywords (which start with a `:`):
 	:rev 0.2   ;; reverb amount
 	:rate 1.2  ;; playback rate (affects pitch)
 	:lpf 4000  ;; low-pass filter cutoff
+	:sus 200   ;; set sustain to 200ms (ASR envelope)
 )) 
 ```
 
-See the "Sound Events" section for all parameters and available synths.
+See the [Sound Events](https://megra-doc.readthedocs.io/en/latest/function-reference/sound-events/) section for available parameters and their defaults.
 
 ## Synthesizers
 
@@ -46,7 +47,8 @@ synths, a karplus-strong approximation and some glitchy wavetable stuff.
 	      :rev 0.2   ;; <-- reverb amount
 	))
 ```
-See the "Sound Events" section in the function reference for all parameters and available synths.
+
+See the [Sound Events](https://megra-doc.readthedocs.io/en/latest/function-reference/sound-events/) section in the function reference for all available synths and their parameters.
 
 ## Designing Complex Sounds and Instruments
 
@@ -76,4 +78,4 @@ Then you can use the function just like any other sound event:
 	(cyc 'bar (fatsaw 100) (fatsaw 120) (fatsaw 90) (fatsaw 80)))
 ```
 
-For the various options when defining functions, see the "Language Constructs" section in the function reference.
+For the various options when defining functions, see the [Language Constructs](https://megra-doc.readthedocs.io/en/latest/function-reference/language-constructs/) section in the function reference.
