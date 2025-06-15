@@ -11,7 +11,7 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 
 * name - generator name
 * sequence - sequence description
-* `:dur` - default space between events 
+* `:dur` - the overall duration of the cycle. This will be split depending on the number of events you pass in. The default is 800ms.
 * `:rep` - probability of repeating an event (this might change the cycle duration)
 * `:max-rep` - limits number of repetitions
 * `:rnd` - random connection probability (currently not working the way I expected it ...)
@@ -27,6 +27,7 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 
 The default duration for a cycle is 800ms. Thus, the following example will 
 create an even beat with a time spacing of 200ms between each event:
+
 ```lisp
 ;; plain
 (sx 'simple #t 
