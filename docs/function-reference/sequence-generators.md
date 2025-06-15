@@ -124,14 +124,14 @@ This is great to use together with the `cmp` (compose) function to write shortha
 (sx 'foo #t
 (cmp
 	;; the second argument ('freq) is the parameter the factors are applied to
-	(facts 'baz 'freq 1 1.2 0.9 1.3) ;; apply a series of factors to create a melody
+	(facts 'baz :freq 1 1.2 0.9 1.3) ;; apply a series of factors to create a melody
 	(nuc 'bar (saw 100))))
 
 ;; make complex rhythmms
 (sx 'foo #t
 (cmp
 	;; 'dur is the duration parameter (between event onsets)
-	(facts 'baz 'dur 1.25 0.75 1.5 0.5) ;; apply a series of factors to create a rhythm
+	(facts 'baz :dur 1.25 0.75 1.5 0.5) ;; apply a series of factors to create a rhythm
 	(loop 'bar (bd) (sn))))
 
 ```
@@ -462,21 +462,21 @@ This is great to use together with the `cmp` (compose) function to write shortha
 (sx 'foo #t
   (cmp
 	;; the second argument ('freq) is the parameter the factors are applied to
-	(vals 'baz 'freq 100 120 90 130) ;; apply a series of values to create a melody
+	(vals 'baz :freq 100 120 90 130) ;; apply a series of values to create a melody
 	(nuc 'bar (saw))))
 
 ;; make complex rhythmms
 (sx 'foo #t
   (cmp
 	;; 'dur is the duration parameter (between event onsets)
-	(vals 'baz 'dur 250 150 300 100) ;; apply a series of values to create a rhythm
+	(vals 'baz :dur 250 150 300 100) ;; apply a series of values to create a rhythm
 	(loop 'bar (bd) (sn))))
 	
 ;; you can also sequence sample keys
 (sx 'foo #t
   (cmp
 	;; 'dur is the duration parameter (between event onsets)
-	(vals 'baz 'keys 'a3 'as3 'b3 'c4) ;; apply a series of keys to pick specific samples
+	(vals 'baz :keys 'a3 'as3 'b3 'c4) ;; apply a series of keys to pick specific samples
 	(nuc 'bar (piano 'mp))))
 
 ```
