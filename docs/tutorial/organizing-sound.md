@@ -115,7 +115,7 @@ This is so that we can adress them for visualization, and keep their state over 
 
 ![Just a Sine Wave](../diagrams/nucleus.svg)
 
-This is the most simple generator, it just repeats the events it is given over and over at a steady time interval. Each generator has a bunch of keyword arguments, as you can see above.
+This is the most simple generator, it just repeats the events it is given over and over at a steady time interval.
 
 ### The Loop Generator
 
@@ -127,8 +127,16 @@ We've already seen this above in the introduction of contexts. The `loop` genera
   (loop 'bells (risset 'a4) (~) (risset 'a6) (~) (risset 'a4) (~) (risset 'c5) (risset 'e5)))
 ```
 
-By default, the onsets of the sound events are evenly spaced. If you want to modify the time between onsets,
-you can specify the time in milliseconds (the defualt time is 200ms):
+By default, the **onsets** of the sound events are evenly spaced. Sound events can overlap, their duration is not dependent on the space between them.
+If you want to modify the time between onsets, you can specify the time in milliseconds using the `:dur` keyword (if not specified, the default duration
+of 200ms will be used):
+
+```lisp
+(sx 'trololo # ;; much faster and uneven
+	(loop 'bells :dur 200 (risset 'a4) (~) (risset 'a6) (~) (risset 'a4) (~) (risset 'c5) (risset 'e5)))
+```
+
+The `loop` generator also allows to use different times between the events, just by placing a number between them:
 
 ```lisp
 (sx 'trololo # ;; much faster and uneven
