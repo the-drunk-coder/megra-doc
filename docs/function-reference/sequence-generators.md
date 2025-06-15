@@ -11,7 +11,7 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 
 * name - generator name
 * sequence - sequence description
-* `:dur` - the overall duration of the cycle. This will be split depending on the number of events you pass in. The default is 800ms.
+* `:time` - the overall time of the cycle in milliseconds. This will be split depending on the number of events you pass in. The default is 800ms.
 * `:rep` - probability of repeating an event (this might change the cycle duration)
 * `:max-rep` - limits number of repetitions
 * `:rnd` - random connection probability (currently not working the way I expected it ...)
