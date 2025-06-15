@@ -475,7 +475,7 @@ This is great to use together with the `cmp` (compose) function to write shortha
 ;; you can also sequence sample keys
 (sx 'foo #t
   (cmp
-	;; :dur is the duration parameter (between event onsets)
+	;; :keys selects sample lookup keys
 	(vals 'baz :keys 'a3 'as3 'b3 'c4) ;; apply a series of keys to pick specific samples
 	(nuc 'bar (piano 'mp))))
 
