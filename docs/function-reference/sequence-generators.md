@@ -115,22 +115,26 @@ a loop can be applied (`rep`, `max-rep` and `rnd`).
 
 ## `facts` - Factors for Parameters 
 
-This is great to use together with the `cmp` (compose) function to write shorthands
+This is great to use together with the `cmp` (compose) function to write shorthands.
+
+### Syntax
+
+```lisp
+(facts <name> :<param> <sequence of multipliers>)
+```
 
 ### Examples 
 
 ```lisp
-;; make a melody
+;; make a melody by applying factor to frequency
 (sx 'foo #t
 (cmp
-	;; the second argument ('freq) is the parameter the factors are applied to
 	(facts 'baz :freq 1 1.2 0.9 1.3) ;; apply a series of factors to create a melody
 	(nuc 'bar (saw 100))))
 
-;; make complex rhythmms
+;; make complex rhythms by applying factors to duration
 (sx 'foo #t
-(cmp
-	;; 'dur is the duration parameter (between event onsets)
+(cmp	
 	(facts 'baz :dur 1.25 0.75 1.5 0.5) ;; apply a series of factors to create a rhythm
 	(loop 'bar (bd) (sn))))
 
@@ -455,28 +459,31 @@ This generator arranges sound events in "stages". See for yourself.
 
 This is great to use together with the `cmp` (compose) function to write shorthands
 
+### Syntax
+
+```lisp
+(vals <name> :<param> <sequence of values>)
+```
+
 ### Examples 
 
 ```lisp
-;; make a melody
+;; make a melody by replacing frequencies
 (sx 'foo #t
   (cmp
-	;; the second argument (:freq) is the parameter the factors are applied to
 	(vals 'baz :freq 100 120 90 130) ;; apply a series of values to create a melody
 	(nuc 'bar (saw))))
 
-;; make complex rhythmms
+;; make complex rhythms by replacing durations
 (sx 'foo #t
   (cmp
-	;; :dur is the duration parameter (between event onsets)
 	(vals 'baz :dur 250 150 300 100) ;; apply a series of values to create a rhythm
 	(loop 'bar (bd) (sn))))
 	
 ;; you can also sequence sample keys
 (sx 'foo #t
   (cmp
-	;; :keys selects sample lookup keys
-	(vals 'baz :keys 'a3 'as3 'b3 'c4) ;; apply a series of keys to pick specific samples
+	(vals 'baz :keys 'a3 'as3 'b3 'c4) 
 	(nuc 'bar (piano 'mp))))
 
 ```
