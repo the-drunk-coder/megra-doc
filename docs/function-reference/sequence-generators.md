@@ -20,7 +20,7 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 ### Syntax
 
 ```lisp
-(cyc <name> :dur <duration> <event sequence>)
+(cyc <name> :time <cycle time> <event sequence>)
 ```
 
 ### Example 
@@ -69,7 +69,7 @@ really, as this breaks the cycle length:
 ;; control cycles with a loop
 (sx 'control #t
 	(loop 'ba 
-         :dur 1599 ;; switch just in time ... will run out of sync eventually
+         :time 1599 ;; switch just in time ... will run out of sync eventually
 		 (ctrl (sx 'controlled #t (cyc 'fa (bd) (sn))))
 		 (ctrl (sx 'controlled #t (cyc 'fa (hats) (hats))))		
 		))
