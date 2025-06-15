@@ -8,7 +8,7 @@ Let's explore the sound events using the `(once)` function, which plays a sound 
 
 ## Samples
 
-Sample events are the staple of Mégra sounds. They're organized in a folder system that is explained in the "Using Samples" section above.
+Sample events are the staple of Mégra sounds. They're organized in a folder system that is explained in the [Using Samples](https://megra-doc.readthedocs.io/en/latest/using-samples/) section above. If you haven't read that section yet, this would be a good time to do so.
 
 Without any arguments, a random sample will be chosen from the specified category (which contains all the samples in the respective folder):
 
