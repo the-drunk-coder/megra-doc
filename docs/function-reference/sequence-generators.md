@@ -12,10 +12,10 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 * name - generator name
 * sequence - sequence description
 * `:time` - the overall time of the cycle in milliseconds. The default is 800ms. Duration between events within the cycle will be `time/number of events`.
-* ~~`:rep` - probability of repeating an event (this might change the cycle duration)~~
-* ~~`:max-rep` - limits number of repetitions~~
-* ~~`:rnd` - random connection probability (currently not working the way I expected it ...)~~
-* ~~`:events` - use labeled events~~
+* DEPRECATED `:rep` - probability of repeating an event 
+* DEPRECATED `:max-rep` - limits number of repetitions
+* DEPRECATED `:rnd` - random connection probability (currently not working the way I expected it ...)
+* DEPRECATED `:events` - use labeled events
 
 ### Syntax
 
