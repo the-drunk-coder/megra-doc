@@ -2,12 +2,18 @@
 
 ## `cyc` - Cycle Generator
 
-Generates a fixed-duration cycle. The duration between the events will be determined by the number
-of events, while the overall duration is fixed. 
+Generates a fixed-time cycle. The duration between the event onsets will be determined by the number
+of events, while the overall time duration of the cycle is fixed. 
 
 Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-reference/shorthand-syntax/).
 
-#### Parameters
+### Syntax
+
+```lisp
+(cyc <name> :time <cycle time> <event sequence>)
+```
+
+### Parameters
 
 * name - generator name
 * sequence - sequence description
@@ -17,16 +23,11 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 * DEPRECATED `:rnd` - random connection probability (currently not working the way I expected it ...)
 * DEPRECATED `:events` - use labeled events
 
-### Syntax
-
-```lisp
-(cyc <name> :time <cycle time> <event sequence>)
-```
 
 ### Example 
 
-The default duration for a cycle is 800ms. Thus, the following example will 
-create an even beat with a time spacing of 200ms between each event:
+The default time for a cycle is 800ms. Thus, the following example will 
+create an even beat with a spacing of 200ms between each event onset:
 
 ```lisp
 ;; plain
@@ -34,8 +35,8 @@ create an even beat with a time spacing of 200ms between each event:
   (cyc 'beat (bd) (hats) (bd) (hats))) 
 ```
 
-This one, on the other hand, will result in an event spacing of 266.666667ms (800/3),
-while the overall cycle duration will remain:
+This one, on the other hand, will result in an spacing of 266.666667ms `(800/3)`,
+between event onsets, while the overall cycle duration will remain:
 
 ```lisp
 ;; plain
@@ -359,13 +360,26 @@ great to write scores, using the linear sequence with control events to score ot
 The `loop` generator, unlike `cyc`, creates a loop of events, where the overall duration is dependent
 on the number of events you pass in.
 
+The default duration between event onsets is 200ms.
+
 Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-reference/shorthand-syntax/).
+
+### Syntax
+
+```lisp
+(loop <name> :dur <duration between event onsets> <event and optional duration sequence>)
+```
+
+### Parameters
+
+* <name> - generator name
+* `dur` - default duration between event onsets (optional, default 200ms)
+* <event and optional duration sequence> - Sequence description. Plain numbers between events stand for the duration between the events and will overwrite default duration.
 
 ### Example
 
 ```lisp
-;; default durations
-;; assuming the default duration is 200ms, this loop will have an overall duration (or cycle-time) of 800ms
+;; use default duration, total loop time is 800ms
 (sx 'around #t
   (loop 'and-around (saw 100) (saw 200) (saw 300) (saw 400)))
   
@@ -373,13 +387,17 @@ Accepts [shorthand syntax](https://megra-doc.readthedocs.io/en/latest/function-r
 (sx 'around #t
   (loop 'and-around (saw 100) (saw 200) (saw 300) (saw 400) (saw 500)))
   
-;; compare with a cycle, on the other hand:
+;; change default duration
 (sx 'around #t
-  (cyc 'and-around (saw 100) (saw 200) (saw 300) (saw 400) (saw 500)))
-  
-;; custom durations
+  (loop 'and-around :dur 100 (saw 100) (saw 200) (saw 300) (saw 400) (saw 500)))
+    
+;; use custom durations between event onsets
 (sx 'around #t
   (loop 'and-around (saw 100) 400 (saw 200) 100 (saw 300) 200 (saw 400)))
+  
+  ;; compare with a cycle, on the other hand:
+(sx 'around #t
+  (cyc 'and-around (saw 100) (saw 200) (saw 300) (saw 400) (saw 500)))
 ```
 
 ---
