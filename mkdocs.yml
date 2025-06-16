@@ -10,6 +10,7 @@ nav:
         - 'Using Samples' : 'using-samples.md'
         - 'The Editor' : 'editor.md'
         - 'The Visualizer' : 'using-the-visualizer.md'
+        - 'Scoreviz' : 'using-scoreviz.md'
     - 'Tutorial':
         - '1. Soundcheck' : 'tutorial/soundcheck.md'
         - '2. Making Sound' : 'tutorial/making-sound.md'
