@@ -9,6 +9,7 @@ nav:
         - 'The Startup File' : 'startup-file.md'
         - 'Using Samples' : 'using-samples.md'
         - 'The Editor' : 'editor.md'
+        - 'The Visualizer' : 'using-the-visualizer.md'
     - 'Tutorial':
         - '1. Soundcheck' : 'tutorial/soundcheck.md'
         - '2. Making Sound' : 'tutorial/making-sound.md'
