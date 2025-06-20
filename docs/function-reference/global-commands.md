@@ -259,12 +259,12 @@ Short for `SyncconteXt`.
 
 ```lisp
 (sx 'simple #t
-  (nuc 'beat (bd) :dur 400))
+  (nuc 'beat :dur 400 (bd)))
   
 ;; stop the context by setting the flag to false:
 
 (sx 'simple #f ;; <- false !
-	(nuc 'beat (bd) :dur 400))
+   (nuc 'beat :dur 400 (bd)))
 
 (sx 'simple2 #t :sync 'simple :shift 200
   (nuc 'beat2 (sn) :dur 400))
@@ -272,14 +272,14 @@ Short for `SyncconteXt`.
 ;; you can solo and mute by tag ...
   
 (sx 'solo #t :solo 'bd ;; <-- solo all events tagged 'bd'
-  (nuc 'snare (sn) :dur 400)
-  (nuc 'hats (hats) :dur 400)
-  (nuc 'bass (bd) :dur 400))
+  (nuc 'snare :dur 400 (sn))
+  (nuc 'hats :dur 400 (hats))
+  (nuc 'bass :dur 400 (bd)))
 
 (sx 'solo #t :block 'bd ;; <-- block all events tagged 'bd'
-  (nuc 'snare (sn) :dur 400)
-  (nuc 'hats (hats) :dur 400)
-  (nuc 'bass (bd) :dur 400))
+  (nuc 'snare :dur 400 (sn))
+  (nuc 'hats :dur 400 (hats))
+  (nuc 'bass :dur 400 (bd)))
   
 ;; If your generators go out of sync due to tempo changes or something,
 ;; you can explicitly re-sync them: 
