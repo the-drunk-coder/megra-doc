@@ -9,7 +9,8 @@ This will download a minimal set of samples (about 128MB) that will get you thro
 **Note:**
 
 * This file will be downloaded: [https://parkellipsen.de/megra-tutorial-samples.zip](https://parkellipsen.de/megra-tutorial-samples.zip).
-* The `sha256` checksum is `ed0fb62bcd0ab1eee80ac80a013f01ed52c459c064f449129908739595cbdf94`. Mégra will do validate the checksum on download.
+* The `sha256` checksum is `ed0fb62bcd0ab1eee80ac80a013f01ed52c459c064f449129908739595cbdf94`.
+* Mégra will validate the checksum on download.
 * The file is about 128MB. It might take a few seconds to download.
 
 ## Custom Sample Sets
