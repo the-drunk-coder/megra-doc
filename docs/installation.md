@@ -6,9 +6,11 @@ There are three ways to install Mégra. You can download the binary, install it 
 
 This is the easiest way if you're interested in using Mégra. As Mégra is a standalone, self-contained program, there's not much more setup to be done. Just download the latest version from the <a href="https://github.com/the-drunk-coder/megra.rs/releases/" target="_blank">release page</a>.
 
-LATEST RELEASE: <a href="https://github.com/the-drunk-coder/megra.rs/releases/tag/v0.0.15" target="_blank">Mégra 0.0.15</a>
+LATEST RELEASE: <a href="https://github.com/the-drunk-coder/megra.rs/releases/tag/v0.0.16" target="_blank">Mégra 0.0.16</a>
 
 On Linux and macOS, you'll probably need to make the file executable by calling `chmod +x <filename>` on the command line.
+
+On macOS, the first time you start Mégra it will probably tell you you can't start it because it's from an unverified publisher. You can go to **Settings->Security & Privacy**, where you'll see a button "Open anyway". Now you can select "open anyway" the next time you start Mégra, and from then on, should be able to start it without problems.
 
 **NOTE:** The pre-build versions don't need you to configure your system's audio buffer size, at the cost of a slightly higher latency. For low-latency versions, see the "With Cargo" install method.
 
