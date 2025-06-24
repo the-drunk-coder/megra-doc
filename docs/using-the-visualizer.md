@@ -6,7 +6,7 @@ It's currently not integrated in Mégra, but a browser-based application written
 
 ## Installation
 
-Follow the instructions in the README here: https://github.com/the-drunk-coder/megra-visualizer 
+Follow the instructions in the README here: [https://github.com/the-drunk-coder/megra-visualizer](https://github.com/the-drunk-coder/megra-visualizer)
 
 ## Usage
 
